@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'reviews/show'
+  get 'reviews/show' # route works
   get 'reviews/new'
   get 'reviews/create'
   get 'runs/index'
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users do 
+  resources :users do
     resources :buddy_connections, only:[:index, :show, :destroy, :create, :edit]
   end
 
