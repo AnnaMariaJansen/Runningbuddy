@@ -1,9 +1,7 @@
 class BuddyConnectionsController < ApplicationController
   before_action :find_buddy, only: [:show, :edit, :destroy]
   def index
-    raise
-    @buddies = BuddyConnection.where(user_1_id: current_user)
-    @buddies << BuddyConnection.where(user_2_id: current_user)
+    @buddies = BuddyConnection.where(user_1_id: current_user) + BuddyConnection.where(user_2_id: current_user)
   end
 
   def show
@@ -19,7 +17,7 @@ class BuddyConnectionsController < ApplicationController
     if @BuddyConnection.save
       # do something
     else
-      redirect_to #somewhere
+      redirect_to # somewhere
     end
   end
 
