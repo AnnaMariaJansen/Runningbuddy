@@ -5,36 +5,37 @@ class BuddyConnectionsController < ApplicationController
   end
 
   def show
-    raise
+    # leaving blank for now, don´t see the point atm
   end
 
   def edit
+    # don´t see why we need this either, especially without an update?
   end
 
   def create
     raise
-    @BuddyConnection = BuddyConnection.new(buddyc_params)
-    if @BuddyConnection.save
-      # do something
+    # guessing this is triggered by a button on the show page
+    # therefor can't test this rn
+    @buddy_connection = BuddyConnection.new(user_1_id: current_user, user_2_id: buddyc_params)
+    if @buddy_connection.save
+      redirect_to user_buddy_connections_path
     else
-      redirect_to # somewhere
+      redirect_to users_path # ? alternatively to runs_path
     end
   end
 
   def destroy
-    raise
-    @buddy.delete
-    # add confiramtion and notice flash
-    redirect_to buddy_connections_index_path
+    @buddy.destroy
+    redirect_to user_buddy_connections_path
   end
 
   private
 
   def find_buddy
-    @buddy = BuddyConnection.find(user_2_id: params[:id])
+    @buddy = BuddyConnection.find(params[:id])
   end
 
   def buddyc_params
-    params.require(:meeting).permit(:run_id, :user_id)
+    params.require(:buddy_connections).permit(:user_id)
   end
 end
