@@ -2,7 +2,8 @@
 <p>Find me in app/views/buddy_connections/index.html.erb</p>
 <% @buddies.each do |pair| %>
   <%= User.where(id: pair.user_1_id) %>
-  <p>and</p>
   <%= User.where(id: pair.user_2_id) %>
+  <%= link_to "Unbuddy", "/users/#{current_user.id}/buddy_connections/#{pair.id}", method: :delete, data: { confirm: "Are you sure?" } %>
+
   <hr>
 <% end %>
