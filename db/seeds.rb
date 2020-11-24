@@ -5,6 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Review.delete_all
+Run.delete_all
+User.delete_all
+
+user_one = User.create(email: 'soph@example.com', password: '123456')
+run_one = Run.create(route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
+# meeting_one = Meeting.create
+review_one = Review.create(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy")
+
+user_two = User.create(email: 'arthur@example.com', password: '123456')
+run_two = Run.create(route: 'the park', length: '4km', pace: "4:20", duration: "not so long")
+# meeting_two
+review_two = Review.create(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy")
+
 mike = User.create(email: "mike@mike.com", password: "password")
 james = User.create(email: "james@james.com", password: "password")
-BuddyConnection.create(user_2_id: mike, user_1_id: james)
+buddy_pair = BuddyConnection.create(user_2_id: mike, user_1_id: james)
+
