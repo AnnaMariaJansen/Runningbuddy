@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'buddy_connections/index'
+  get 'buddy_connections/show'
+  get 'buddy_connections/destroy'
+  get 'buddy_connections/create'
+  get 'buddy_connections/edit'
+  get 'meetings/create'
+  get 'meetings/update'
   devise_for :users
   root to: 'pages#home'
 
