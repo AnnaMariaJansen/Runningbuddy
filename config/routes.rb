@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  get 'reviews/show' # route works
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'runs/index'
-  get 'runs/show'
-  get 'runs/edit'
-  get 'runs/update'
-  get 'runs/create'
-  get 'runs/new'
+
   devise_for :users
   root to: 'pages#home'
 
