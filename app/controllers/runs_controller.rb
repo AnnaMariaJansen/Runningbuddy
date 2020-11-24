@@ -1,14 +1,15 @@
 class RunsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
-    @runs = policy_scope(Run)
-    if params[:query].present?
-      sql_query = "route ILIKE :query OR length ILIKE :query"
-      @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
-      @error = "sorry we couldn't find a run with your criteria" if @runs == []
-    else
-      @runs = policy_scope(Run)
-    end
+    @runs = Run.all
+    # @runs = policy_scope(Run)
+    # if params[:query].present?
+    #   # sql_query = "route ILIKE :query OR length ILIKE :query"
+    #   # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
+    #   @error = "sorry we couldn't find a run with your criteria" if @runs == []
+    # else
+      # @runs = policy_scope(Run)
+    # end
   end
 
   def show
@@ -16,7 +17,7 @@ class RunsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @run = Run.new
   end
 
@@ -24,7 +25,7 @@ class RunsController < ApplicationController
     @run = Run.new(run_params)
     @run.user = current_user
     if @run.save
-      redirect_to run_pth(@run)
+      redirect_to run_path(@run)
     else
       render :new
     end

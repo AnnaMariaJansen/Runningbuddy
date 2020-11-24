@@ -1,4 +1,5 @@
 class Meeting < ApplicationRecord
   belongs_to :user, foreign_key: "user_id"
-  has_many :reviews
+  belongs_to :run
+  has_many :reviews, dependent: :destroy
 end
