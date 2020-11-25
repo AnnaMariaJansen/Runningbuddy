@@ -14,7 +14,7 @@
                         <p><%= run.date %></p>
                         <p><%= run.location %></p>
                       </div>
-                      <button class="button-green">More</button>
+                      <%= link_to "More", run_path(run), class: "button-green" %>
                       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
                     </div>
 

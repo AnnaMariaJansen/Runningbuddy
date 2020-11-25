@@ -12,14 +12,12 @@ Run.delete_all
 User.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456')
-run_one = Run.create!(route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
-meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
-review_one = Review.create!(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy", user_id: user_one.id , meeting_id: meeting_one.id)
-
 user_two = User.create!(email: 'arthur@example.com', password: '123456')
-run_two = Run.create!(route: 'the park', length: '4km', pace: "4:20", duration: "not so long")
-meeting_two = Meeting.create!(user_id: user_two.id, run_id: run_two.id)
-review_two = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_two.id , meeting_id: meeting_two.id)
+run_one = Run.create!(user_id: user_two.id, route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
+run_two = Run.create!(user_id: user_two.id, route: 'the park', length: '4km', pace: "4:20", duration: "not so long")
+meeting_one = Meeting.create!(user: user_one, run: run_two)
+
+meeting_two = Meeting.create!(user: user_one, run: run_two)
 
 # mike = User.create!(email: "mike@mike.com", password: "password")
 # james = User.create!(email: "james@james.com", password: "password")

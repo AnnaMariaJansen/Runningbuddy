@@ -1,5 +1,6 @@
 class RunsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :find_run, only: [:show, :edit, :update]
   def index
     @runs = Run.all
     # @runs = policy_scope(Run)
@@ -13,7 +14,6 @@ class RunsController < ApplicationController
   end
 
   def show
-    @run = Run.find(params[:id])
     # ------------------------------------------------
     # => just to test whether meetings are in fact created
     @meetings = Meeting.where(run_id: params[:id])
@@ -27,7 +27,7 @@ class RunsController < ApplicationController
 
   def create
     @run = Run.new(run_params)
-    @run.user = current_user
+    @run.user_id = current_user
     if @run.save
       redirect_to run_path(@run)
     else
@@ -36,21 +36,23 @@ class RunsController < ApplicationController
   end
 
   def edit
-    @run = Run.find(params[:id])
     # autorize @run
   end
 
   def update
-    @run = Run.find(params[:run_id])
-    authorize @run
+    # authorize @run
     if @run.update(run_params)
       redirect_to run_path(@run)
     else
-      render :new #not sure if this is what we want
+      render :edit
     end
   end
 
   private
+
+  def find_run
+    @run = Run.find(params[:id])
+  end
 
   def run_params
     params.require(:run).permit(:route, :length, :date, :pace, :duration, :location)
