@@ -27,12 +27,14 @@ class RunsController < ApplicationController
 
   def create
     @run = Run.new(run_params)
-    @run.user_id = current_user
-    if @run.save
-      redirect_to run_path(@run)
-    else
-      render :new
-    end
+    @run.save
+    redirect_to runs_path(@run)
+    # @run.user = current_user
+    # if @run.save
+    #   redirect_to run_path(@run)
+    # else
+    #   render :new
+    # end
   end
 
   def edit
