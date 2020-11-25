@@ -1,26 +1,23 @@
 class MeetingsController < ApplicationController
   def create
-    @meeting = Meeting.new(user_id: params[:user_id], run_id: params[:run_id])
+    @run = Run.find(params[:run_id])
+    @meeting = Meeting.new(user: current_user, run: @run)
     if @meeting.save!
-      redirect_to run_path(params[:run_id])
+      redirect_to run_path(@run)
     else
       redirect_to users_path
     end
   end
 
   def update
-    # probably have to create extra column status on meeting to have edit make sense
-        # @meeting = Meeting.find(params[:id])
-        # if @meeting.update(meeting_params)
-        #   redirect_to somewhere
-        # else
-        #   render something
-        # end
+    @meeting = Meeting.find(params[:id])
+    @meeting.update!(status: params[:status])
+    redirect_to run_path(@meeting.run)
   end
 
-  # private
+  private
 
-  # def meetings_params
-  #   params.require(:meeting).permit(:user_id, :run_id)
-  # end
+  def meeting_params
+    params.require(:meeting).permit(:status)
+  end
 end
