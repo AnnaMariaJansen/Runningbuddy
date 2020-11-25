@@ -13,6 +13,10 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find(params[:id])
+    # ------------------------------------------------
+    # => just to test whether meetings are in fact created
+    @meetings = Meeting.where(run_id: params[:id])
+    # ------------------------------------------------
   end
 
   def new
