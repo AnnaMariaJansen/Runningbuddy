@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :runs,  except:[:destroy] do
-    resources :meetings, only:[:create, :update] do
-      resources :reviews, only:[:new, :create, :show]
-    end
+    resources :meetings, only:[:create, :update]
+  end
+
+  resources :meetings do
+    resources :reviews, only: [:new, :create, :show]
   end
 
   resources :users do
