@@ -9,6 +9,13 @@ class MeetingsController < ApplicationController
   end
 
   def update
+    # probably have to create extra column status on meeting to have edit make sense
+        # @meeting = Meeting.find(params[:id])
+        # if @meeting.update(meeting_params)
+        #   redirect_to somewhere
+        # else
+        #   render something
+        # end
   end
 
   # private
