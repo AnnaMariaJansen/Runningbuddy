@@ -22,12 +22,12 @@ meeting_two = Meeting.create!(user_id: user_two.id, run_id: run_two.id)
 # review_two = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_two.id , meeting_id: meeting_two.id)
 
 user_three = User.create!(email: 'johanna@example.com', password: '123456')
-run_three = Run.create!(route: 'the city center', length: '24km', pace: "4:20", duration: "longrun")
+run_three = Run.create!(route: 'city center', length: '5km', pace: "4:10", duration: "roughly 25 min")
 meeting_three = Meeting.create!(user_id: user_three.id, run_id: run_three.id)
 # review_three = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_three.id , meeting_id: meeting_three.id)
 
-user_four = User.create!(email: 'anna1@example.com', password: '123456')
-run_four = Run.create!(route: 'Isar', length: '41km', pace: "4:20", duration: "longrun")
+user_four = User.create!(email: 'anna@example.com', password: '123456')
+run_four = Run.create!(route: 'the mountains', length: '6km', pace: "4:30", duration: "however long it takes")
 meeting_four = Meeting.create!(user_id: user_four.id, run_id: run_four.id)
 # review_four = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_four.id , meeting_id: meeting_four.id)
 
