@@ -6,15 +6,14 @@
   width: 66px;
   height: 25px;
   left: 80px;
-  top: 320px;
-  text-decoration: none;
-  margin-top:20px;
   text-align: center;
+  text-decoration: none;
+}
+.button-green:hover {
+  text-decoration: none;
+  color: #FFEBD6;
+  box-shadow: 2px 3px 20px lightgrey;
 }
 
-.button-green:hover {
-  text-decoration:none;
-  color: #5B8266;
-  background-color: #FFEBD6;
-  transition: 0.5s;
-}
+.btn-text {
+  z-index: 1;

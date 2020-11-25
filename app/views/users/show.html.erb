@@ -1,3 +1,13 @@
-<div class= "avatar-big">
-  <h1>hello show</h1>
+<div class= "user-show">
+  <div style="display:flex">
+  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  <%= @users.name %>
+  </div>
+  <div class="user-info">
+    <h2>Details</h2>
+    <p><%= @users.name %></p>
+    <p><%= @users.gender %></p>
+    <p><%= @users.birthday %></p>
+    <p><%= @users.running_level %></p>
+  </div>
 </div>

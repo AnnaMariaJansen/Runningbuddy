@@ -12,6 +12,7 @@ Run.delete_all
 User.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456')
+
 run_one = Run.create!(route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
 meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
 # review_one = Review.create!(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy", user_id: user_one.id , meeting_id: meeting_one.id)
