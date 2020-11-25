@@ -12,12 +12,25 @@ Run.delete_all
 User.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456')
-user_two = User.create!(email: 'arthur@example.com', password: '123456')
-run_one = Run.create!(user_id: user_two.id, route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
-run_two = Run.create!(user_id: user_two.id, route: 'the park', length: '4km', pace: "4:20", duration: "not so long")
-meeting_one = Meeting.create!(user: user_one, run: run_two)
 
-meeting_two = Meeting.create!(user: user_one, run: run_two)
+run_one = Run.create!(route: 'the block', length: '5km', pace: "4:30", duration: "not so long")
+meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
+# review_one = Review.create!(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy", user_id: user_one.id , meeting_id: meeting_one.id)
+
+user_two = User.create!(email: 'arthur@example.com', password: '123456')
+run_two = Run.create!(route: 'the park', length: '4km', pace: "4:20", duration: "not so long")
+meeting_two = Meeting.create!(user_id: user_two.id, run_id: run_two.id)
+# review_two = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_two.id , meeting_id: meeting_two.id)
+
+user_three = User.create!(email: 'johanna@example.com', password: '123456')
+run_three = Run.create!(route: 'city center', length: '5km', pace: "4:10", duration: "roughly 25 min")
+meeting_three = Meeting.create!(user_id: user_three.id, run_id: run_three.id)
+# review_three = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_three.id , meeting_id: meeting_three.id)
+
+user_four = User.create!(email: 'anna@example.com', password: '123456')
+run_four = Run.create!(route: 'the mountains', length: '6km', pace: "4:30", duration: "however long it takes")
+meeting_four = Meeting.create!(user_id: user_four.id, run_id: run_four.id)
+# review_four = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_four.id , meeting_id: meeting_four.id)
 
 # mike = User.create!(email: "mike@mike.com", password: "password")
 # james = User.create!(email: "james@james.com", password: "password")

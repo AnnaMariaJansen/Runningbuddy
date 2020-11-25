@@ -1,4 +1,4 @@
-<div class="run-container">
+<div class="run-container mt-4">
   <div class="col-12">
     <h2>MAKE A NEW RUN</h2>
     <%= simple_form_for(@run) do |f| %>
@@ -8,9 +8,9 @@
     <%= f.input :duration, placeholder: "minutes"%>
     <%= f.input :location, placeholder: "run starting point", id: "autocomplete-create" %>
     <%= f.input :date %>
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-ghost" %>
     <% end %>
 
-  <%= link_to "Back to all runs", runs_path, class: "btn btn-primary" %>
+  <%= link_to "Back to all runs", runs_path, class: "btn btn-ghost" %>
   </div>
 </div>

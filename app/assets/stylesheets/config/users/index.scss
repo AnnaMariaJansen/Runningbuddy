@@ -1,7 +1,7 @@
-body {
+.user-index {
   background: rgba(255, 235, 214, 0.3);
-}
 
+}
 
 .card-trip {
   overflow: hidden;
@@ -34,20 +34,4 @@ body {
   color: #003844;
   font-weight: bold;
 
-}
-
- .card-trip-infos p {
-  font-size: 12px;
-  color: #003844;
-  opacity: .7;
-  margin: 0;
-
-}
-
-
-.card-trip-infos .card-trip-user {
-  position: absolute;
-  right: 30px;
-  top: -40px;
-  width: 40px;
 }
