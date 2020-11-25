@@ -1,1 +1,5 @@
 <h1>MAKE A NEW REVIEW ABOUT A RUN</h1>
+<%= simple_form_for [ @meeting, @review ] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
