@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :meetings, only:[:create, :update]
   end
 
-  resources :meetings do
+  resources :meetings, only: [:create, :update] do
     resources :reviews, only: [:new, :create, :show]
   end
 
