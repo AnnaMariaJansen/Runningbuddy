@@ -15,9 +15,8 @@
 
 // Your CSS partials for runs
 @import "runs/index";
-@import "runs/edit";
-@import "runs/new";
+@import "runs/show";
 
-// Your CSS partials for reviews
-@import "reviews/show";
-
+body {
+  background: #E5E5E5;
+}
