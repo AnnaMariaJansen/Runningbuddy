@@ -41,7 +41,7 @@ class RunsController < ApplicationController
   end
 
   def update
-    @run = Run.find(params[:id])
+    @run = Run.find(params[:run_id])
     authorize @run
     if @run.update(run_params)
       redirect_to run_path(@run)
