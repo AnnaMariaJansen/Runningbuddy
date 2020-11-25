@@ -1,16 +1,20 @@
 <h1>Runs#show</h1>
 <p>Find me in app/views/runs/show.html.erb</p>
 
-<% @meetings.each do |meeting|%>
+<% @meetings.sort.each do |meeting|%>
     <%= meeting.id %>:
     <%= meeting.status %>
     <% can_cancel = meeting.status != "cancelled" %>
     <% can_confirm = meeting.status == "pending" %>
+    <% can_undo = meeting.status == "cancelled" %>
     <% if can_cancel %>
-      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled"), method: :patch %>
+      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled"), method: :patch, data: { confirm: "Are you sure?" } %>
     <% end %>
     <% if can_confirm %>
       <%= link_to 'confirm run', run_meeting_path(meeting.run, meeting, status: "confirmed"), method: :patch %>
+    <% end %>
+    <% if can_undo %>
+      <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
     <% end %>
   <hr>
   <%#= link_to "remove", dose_path(dose[:id]), method: :delete, data: { confirm: "Are you sure?" } %>
