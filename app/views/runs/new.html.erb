@@ -1,1 +1,16 @@
-<h1>MAKE A NEW RUN</h1>
+<div class="run-container">
+  <div class="col-12">
+    <h2>MAKE A NEW RUN</h2>
+    <%= simple_form_for(@run) do |f| %>
+    <%= f.input :route %>
+    <%= f.input :length, placeholder: "kilometers" %>
+    <%= f.input :pace %>
+    <%= f.input :duration, placeholder: "minutes"%>
+    <%= f.input :location, placeholder: "starting point" %>
+    <%= f.input :date %>
+    <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+
+  <%= link_to "Back to all runs", runs_path, class: "btn btn-primary" %>
+  </div>
+</div>
