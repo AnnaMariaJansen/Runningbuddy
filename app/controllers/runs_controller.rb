@@ -14,6 +14,7 @@ class RunsController < ApplicationController
   end
 
   def show
+    @creator = User.find(@run.user_id)
     # ------------------------------------------------
     # => just to test whether meetings are in fact created
     @meetings = Meeting.where(run_id: params[:id])
