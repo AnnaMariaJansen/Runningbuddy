@@ -1,0 +1,48 @@
+body {
+  background: rgba(255, 235, 214, 0.3) !important;
+}
+.detail-info {
+margin-top: 30px;
+margin-left: 40px;
+margin-right:40px;
+}
+
+.user {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user img {
+  width: 120px;
+  border-radius: 50%;
+  margin-right: 35px
+
+}
+
+.user-info {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+  margin-top:30px;
+  border-radius: 4px;
+  padding-top:15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+
+}
+
+.last-runs {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  align-items: center;
+  margin-top:30px;
+  border-radius: 4px;
+  padding-top:15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
+

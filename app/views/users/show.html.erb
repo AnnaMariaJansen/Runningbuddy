@@ -1,13 +1,31 @@
-<div class= "user-show">
-  <div style="display:flex">
-  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  <%= @users.name %>
+
+<div class="detail-info">
+
+  <div class="user d-flex flex-wrap">
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <h2><%= @creator.email %></h2>
   </div>
+
   <div class="user-info">
-    <h2>Details</h2>
-    <p><%= @users.name %></p>
-    <p><%= @users.gender %></p>
-    <p><%= @users.birthday %></p>
-    <p><%= @users.running_level %></p>
+    <h3>Details</h3>
+    <p>Name:<%= @creator.name %></p>
+    <p>Gender:<%= @creator.gender %></p>
+    <p>Birthday:<%= @creator.birthday %></p>
+    <p>Running Level:<%= @creator.running_level %></p>
   </div>
+
+  <div class="last-runs">
+    <h3><%= @creator.email %> last Runs:</h3>
+      <ul>
+        <% @meetings.each do |meeting| %>
+          <li>
+            <% run = Run.find((meeting.run_id)) %>
+            <%= run.route %>
+          </li>
+
+        <% end %>
+      </ul>
+  </div>
+
 </div>
+
