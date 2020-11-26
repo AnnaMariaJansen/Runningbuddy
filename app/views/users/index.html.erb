@@ -1,26 +1,24 @@
-  <div class="user-index">
-    <div class="d-flex w-100">
-      <div class="row">
-        <div class="col-12">
-          <div style="display:flex">
-            <% @users.each do |user| %>
-                <div class="card-trip">
-                  <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80">
+<div class="d-flex w-100">
+  <div>
+    <div>
+      <div class="card-trip-container">
+        <% @users.each do |user| %>
+          <div class="card-trip">
+            <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80">
 
-                    <div style="display: flex" class="card-trip-infos">
-                      <div>
-                        <h2><%= user.name %></h2>
-                        <p><%= user.birthday %></p>
-                        <p><%= user.gender %></p>
-                        <p><%= user.running_level %></p>
-                      </div>
-                      <%= link_to "More", user_path(user), class: "button-green" %>
-                    </div>
-
+              <div style="display: flex" class="card-trip-infos">
+                <div>
+                  <h2><%= user.name %></h2>
+                  <p><%= user.birthday %></p>
+                  <p><%= user.gender %></p>
+                  <p><%= user.running_level %></p>
                 </div>
-            <% end %>
+                <%= link_to "More", user_path(user), class: "button-green" %>
+              </div>
+
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
