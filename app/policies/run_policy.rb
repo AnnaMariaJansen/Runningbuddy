@@ -4,4 +4,8 @@ class RunPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def update
+    record.user_id == user.id
+  end
 end

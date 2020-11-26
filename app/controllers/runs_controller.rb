@@ -43,11 +43,11 @@ class RunsController < ApplicationController
   end
 
   def edit
-    # autorize @run
+    autorize @run
   end
 
   def update
-    # authorize @run
+    authorize @run
     if @run.update(run_params)
       redirect_to run_path(@run)
     else
