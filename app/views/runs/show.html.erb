@@ -30,13 +30,13 @@
     <% can_confirm = meeting.status == "pending" %>
     <!-- extend to only allowing this to user who deleted it previously -->
     <% can_undo = meeting.status == "cancelled" %>
-    <% if can_cancel %>
-      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled"), method: :patch, data: { confirm: "Are you sure?" } %>
+    <% if can_cancel && policy(meeting).update? %>
+      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
     <% end %>
-    <% if can_confirm %>
+    <% if (can_confirm && policy(meeting).update?) && @creator == current_user %>
       <%= link_to 'confirm run', run_meeting_path(meeting.run, meeting, status: "confirmed"), method: :patch %>
     <% end %>
-    <% if can_undo %>
+    <% if (can_undo && policy(meeting).update?) && current_user.id.to_i == params[:sender].to_i %>
       <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
     <% end %>
   <% end %>
