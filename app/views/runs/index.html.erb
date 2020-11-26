@@ -1,26 +1,27 @@
+<div class="d-flex w-100">
+  <div>
+    <div>
+      <div class="card-trip-container">
+        <% @runs.each do |run| %>
+          <div class="card-trip">
+            <img src="https://images.unsplash.com/photo-1581889470536-467bdbe30cd0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2780&q=80">
 
-    <div class="d-flex w-100">
-      <div class="row">
-        <div class="col-12">
-          <div style="display:flex">
-            <% @runs.each do |run| %>
-                <div class="card-trip">
-                  <img src="https://images.unsplash.com/photo-1581889470536-467bdbe30cd0?ixlib=rb-1.2.1&auto=format&fit=crop&w=2780&q=80">
-
-                    <div style="display: flex" class="card-trip-infos">
-                      <div>
-                        <h2><%= run.route %></h2>
-                        <p><%= run.date %></p>
-                        <p><%= run.location %></p>
-                      </div>
-                      <%= link_to "More", run_path(run), class: "button-green" %>
-                      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-                    </div>
+              <div style="display: flex" class="card-trip-infos">
+                <div>
+                  <h2><%= run.route %></h2>
+                  <p><%= run.date %></p>
+                  <p><%= run.location %></p>
                 </div>
-            <% end %>
+                <%= link_to "More", run_path(run), class: "button-green" %>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              </div>
+
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
-    <p>looking for a whole different run? <%= link_to "Create your own Run!", new_run_path, class: "btn btn-createrun" %></p>
+  </div>
+</div>
+  
+<p>looking for a whole different run? <%= link_to "Create your own Run!", new_run_path, class: "btn btn-createrun" %></p>
 
