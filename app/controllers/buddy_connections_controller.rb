@@ -1,4 +1,5 @@
 class BuddyConnectionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_buddy, only: [:show, :edit, :destroy]
   def index
     all_buds = policy_scope(BuddyConnection)
