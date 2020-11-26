@@ -14,7 +14,7 @@
                         <p><%= user.gender %></p>
                         <p><%= user.running_level %></p>
                       </div>
-                      <button class="button-green">More</button>
+                      <%= link_to "More", user_path(user), class: "button-green" %>
                     </div>
 
                 </div>
