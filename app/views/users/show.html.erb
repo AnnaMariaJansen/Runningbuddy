@@ -22,10 +22,12 @@
             <% run = Run.find((meeting.run_id)) %>
             <%= run.route %>
           </li>
-
         <% end %>
       </ul>
   </div>
-
+  <div class="buttons-bottom">
+    <%= link_to "Back", users_path, class: "button-green" %>
+   <a class="button-rosa" href="/users/:user_id/buddy_connections">Buddy up</a>
+  </div>
 </div>
 
