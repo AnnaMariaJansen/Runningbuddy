@@ -2,8 +2,8 @@ class RunsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :find_run, only: [:show, :edit, :update]
   def index
-    @runs = Run.all
-    # @runs = policy_scope(Run)
+    # @runs = Run.all
+    @runs = policy_scope(Run)
     # if params[:query].present?
     #   # sql_query = "route ILIKE :query OR length ILIKE :query"
     #   # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")

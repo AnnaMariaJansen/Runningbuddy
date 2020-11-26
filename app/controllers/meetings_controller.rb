@@ -11,6 +11,9 @@ class MeetingsController < ApplicationController
 
   def update
     @meeting = Meeting.find(params[:id])
+    run = Run.find(@meeting.run_id)
+    @run_creator = User.find(run.user_id)
+    authorize @meeting
     @meeting.update!(status: params[:status])
     redirect_to run_path(@meeting.run)
   end
