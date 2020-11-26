@@ -1,5 +1,5 @@
 class RunsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: :index
   before_action :find_run, only: [:show, :edit, :update]
   def index
     # @runs = Run.all
