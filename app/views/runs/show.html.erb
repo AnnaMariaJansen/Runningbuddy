@@ -1,6 +1,5 @@
 <div class="container mt-3 justify-content-center">
-  <% creator = User.find(@run.user_id) %>
-  <h1>Run by <%= creator.email %></h1> <!-- change to name once implemented -->
+  <h1>Run by <%= @creator.email %></h1> <!-- change to name once implemented -->
   <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" alt="placeholder map" class="map">
 </div>
 <hr>
