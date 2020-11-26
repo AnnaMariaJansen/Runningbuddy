@@ -5,7 +5,7 @@ class RunPolicy < ApplicationPolicy
     end
   end
 
-  def update
+  def update?
     record.user_id == user.id
   end
 end
