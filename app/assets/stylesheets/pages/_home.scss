@@ -15,19 +15,56 @@
 }
 
 .banner-home p {
-  font-size: 90px;
+  font-size: 80px;
   color: white;
   opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  text-align: center
+  text-align: center;
+}
+
+
+@media screen and (max-width: 992px) {
+ .banner-home p {
+   font-size: 55px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+ .banner-home p {
+   font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+ .banner-home p {
+   font-size: 26px;
+  }
 }
 
 .banner-home h3 {
-  font-size: 40px;
+  font-size: 55px;
   color: white;
   opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  text-align: center
+  text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+   .banner-home h3 {
+     font-size: 38px;
+    }
+  }
+
+@media screen and (max-width: 500px) {
+   .banner-home h3 {
+     font-size: 28px;
+    }
+  }
+
+@media screen and (max-width: 300px) {
+ .banner-home h3 {
+   font-size: 16px;
+  }
 }
 
 .btn-go {
