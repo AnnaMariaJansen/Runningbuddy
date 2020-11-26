@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.find(params[:id])
+    @creator = User.find(params[:id])
+    @meetings = Meeting.where(run_id: params[:id])
   end
 end

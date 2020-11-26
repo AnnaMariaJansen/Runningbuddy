@@ -1,0 +1,21 @@
+.btn-createrun {
+  color: #5B8266;
+  border: 4px solid #5B8266;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  align-items: inherit;
+  margin: 24px;
+}
+
+.btn-createrun:hover {
+  opacity: 1;
+  color: white;
+  background-color: #5B8266;
+  border: 4px solid white;
+  transition: 0.5s ease;
+}
+
+// #9EF019
