@@ -17,11 +17,15 @@ class BuddyConnectionsController < ApplicationController
   def create
     # guessing this is triggered by a button on the show page
     # therefor can't test this rn
-    @buddy_connection = BuddyConnection.new(user_1_id: current_user, user_2_id: buddyc_params)
-    if @buddy_connection.save
+    @creator = User.find(params[:user_id])
+    @joiner = current_user
+    @buddy_connection = BuddyConnection.new
+    @buddy_connection.user_1 = @creator
+    @buddy_connection.user_2 = @joiner
+    if @buddy_connection.save!
       redirect_to user_buddy_connections_path
     else
-      redirect_to users_path # ? alternatively to runs_path
+      redirect_to user_buddy_connections_path # ? alternatively to runs_path
     end
   end
 
@@ -38,6 +42,6 @@ class BuddyConnectionsController < ApplicationController
   end
 
   def buddyc_params
-    params.require(:buddy_connections).permit(:user_id)
+    params.require(:buddy_connection).permit(:user_1_id, :user_2_id)
   end
 end
