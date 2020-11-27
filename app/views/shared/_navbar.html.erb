@@ -1,24 +1,26 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div>
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "laeufer.jpg" %>
     <% end %>
-
+  </div>
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
-
+  <div>
   <h3 class="mb-0">RunningBuddy</h3>
+  </div>
   <!--
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <% unless ["index"].include?(params[:action]) %>
+      <%# unless ["index"].include?(params[:action]) %>
         <li class="nav-item">
-          <%= link_to "Index", "/users", class: "nav-link" %>
+          <%#= link_to "Index", "/users", class: "nav-link" %>
         </li>
-      <% end %>
+      <%# end %>
     -->
 
-
+    <div>
       <% if user_signed_in? %>
       <!--
         <li class="nav-item active">
@@ -45,4 +47,5 @@
           <%= link_to "LOGIN", new_user_session_path, class: "nav-link" %>
         </div>
       <% end %>
+    </div>
 </div>
