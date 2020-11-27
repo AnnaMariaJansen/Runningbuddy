@@ -22,11 +22,12 @@ class BuddyConnectionsController < ApplicationController
     @buddy_connection = BuddyConnection.new
     @buddy_connection.user_1 = @creator
     @buddy_connection.user_2 = @joiner
-    if @buddy_connection.save!
-      redirect_to user_buddy_connections_path
+    if @buddy_connection.save #flash saying buddy connection worked
+      flash.alert = "You and #{@creator.name} are now running buddies!"
     else
-      redirect_to user_buddy_connections_path # ? alternatively to runs_path
+      flash.alert = "You are already buddies with #{@creator.name}!"
     end
+    redirect_to user_buddy_connections_path #flashmessage you can't buddy up the same person # ? alternatively to runs_path
   end
 
   def destroy
