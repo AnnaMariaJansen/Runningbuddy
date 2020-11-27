@@ -1,0 +1,21 @@
+.button-add-run{
+  background-color: #5B8266;
+  color: #FFEBD6;
+  border-radius: 6px;
+  border:1px solid #5B8266;
+  text-align: center;
+  text-decoration: none;
+  padding:9px;
+  font-size: 14px;
+  transition: 0.5s
+}
+.button-green:hover {
+  text-decoration: none;
+  background-color:#FFEBD6;
+  color: #5B8266;
+  box-shadow: 2px 3px 20px lightgrey;
+}
+
+.btn-text {
+  z-index: 1;
+}

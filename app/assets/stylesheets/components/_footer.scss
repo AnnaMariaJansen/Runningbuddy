@@ -4,20 +4,22 @@
   align-items: center;
   justify-content: space-between;
   height: 100px;
-  padding: 0px 50px;
+  padding: 20px 20px;
   color: rgba(0,0,0,0.3);
   margin-top: 30px;
-}
-.footer-action {
-  display: flex;
   align-items: center;
 }
+
+// .footer-action {
+//   display: flex;
+//   align-items: center;
+// }
 .footer-action a {
   color: black;
   opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
-  padding: 0px 10px;
+  padding: 20px 10px;
 }
 .footer-links a:hover {
   opacity: 1;
