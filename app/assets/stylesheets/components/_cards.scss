@@ -52,3 +52,15 @@ body {
   top: -40px;
   width: 40px;
 }
+.lighter {
+  font-weight: lighter;
+}
+.creator-tag > a {
+  text-decoration: underline;
+  color: grey;
+  transition: 1s;
+}
+.creator-tag > a:hover {
+  text-decoration: underline;
+  color: black;
+}
