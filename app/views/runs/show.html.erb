@@ -6,12 +6,12 @@
 <div class="container mt-3"></div>
   <ul>
     <li><h5>Run details</h5></li>
-    <li><h6>Date: <%= @run.date %></h6></li>
-    <li><h6>Location: <%= @run.location %></h6></li>
-    <li><h6>Route: <%= @run.route %></h6></li>
-    <li><h6>Length: <%= @run.length %></h6></li>
-    <li><h6>Pace: <%= @run.pace %></h6></li>
-    <li><h6>Duration: <%= @run.duration %></h6></li>
+    <li><h6>Date:  <%= @run.date %></h6></li>
+    <li><h6>Location:  <%= @run.location %></h6></li>
+    <li><h6>Route:  <%= @run.route %></h6></li>
+    <li><h6>Length:  <%= @run.length %></h6></li>
+    <li><h6>Pace:  <%= @run.pace %></h6></li>
+    <li><h6>Duration:  <%= @run.duration %></h6></li>
   </ul>
   <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
 </div>
