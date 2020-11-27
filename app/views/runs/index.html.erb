@@ -9,8 +9,8 @@
               <div style="display: flex" class="card-trip-infos">
                 <div>
                   <h2><%= run.route %></h2>
-                  <p><%= run.date %></p>
-                  <p><%= run.location %></p>
+                  <p> Date: <%= run.date %></p>
+                  <p>Location: <%= run.location %></p>
                 </div>
                 <%= link_to "More", run_path(run), class: "button-green" %>
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />

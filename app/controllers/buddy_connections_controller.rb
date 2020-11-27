@@ -30,6 +30,8 @@ class BuddyConnectionsController < ApplicationController
   end
 
   def destroy
+    @creator = User.find(params[:user_id])
+    @joiner = current_user
     authorize @buddy
     @buddy.destroy
     redirect_to user_buddy_connections_path

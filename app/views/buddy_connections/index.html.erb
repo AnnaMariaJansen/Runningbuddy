@@ -4,24 +4,24 @@
 
   <div class="user-info d-flex flex-wrap">
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    <h3 class="ml-4">You are now buddy with <%= BuddyConnection.where(user_2_id: current_user.id).last.user_1.email %></h3>
+    <h3 class="ml-4">You are now buddies with <%= BuddyConnection.where(user_2_id: current_user.id).last.user_1.name %></h3>
   </div>
 
   <div class="user-info pt-4 pb-4">
-    <h2>You'r buddies:</h2>
+    <h2>Your buddies:</h2>
     <div class="card-trip-container">
       <% @buddies.each do |buddy_connection| %>
         <% user = buddy_connection.user_1 %>
         <div class="card-trip">
           <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80">
-            <div style="display: flex" class="card-trip-infos">
+            <div class=" d-flex justify-content-between card-trip-infos">
               <div>
-                <h2><%= user.email %></h2>
-                <p><%= user.birthday %></p>
-                <p><%= user.gender %></p>
-                <p><%= user.running_level %></p>
-                  <%#= link_to "Unbuddy", "/users/#{user_2_id}/buddy_connections/#{buddy_connection.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "button-green" %>
+                <h2>Name: <%= user.name %></h2>
+                <p>Birthday: <%= user.birthday %></p>
+                <p>Gender: <%= user.gender %></p>
+                <p>Running Level: <%= user.running_level %></p>
               </div>
+              <%= link_to "Unbuddy", user_buddy_connection_path(id: buddy_connection.id), method: "DELETE", data: { confirm: "Are you sure?" }, class: "button-rosa" %>
             </div>
         </div>
       <% end %>
