@@ -9,9 +9,9 @@
               <div style="display: flex" class="card-trip-infos">
                 <div>
                   <h2><%= user.name %></h2>
-                  <p><%= user.birthday %></p>
-                  <p><%= user.gender %></p>
-                  <p><%= user.running_level %></p>
+                  <p>Birthday: <%= user.birthday %></p>
+                  <p>Gender: <%= user.gender %></p>
+                  <p>Running Level: <%= user.running_level %></p>
                 </div>
                 <%= link_to "More", user_path(user), class: "button-green" %>
               </div>
