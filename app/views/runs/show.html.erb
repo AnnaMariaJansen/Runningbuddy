@@ -16,34 +16,77 @@
   <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
 </div>
 <hr>
-<% if user_signed_in? %>
-  <div class="container mt-3 meetings-associated">
-    <ul>
-      <h4>Already joining:</h4>
-      <% @meetings.sort.each do |meeting|%>
-      <li class="mb-2">
-        <% user = User.find(meeting.user_id) %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-        <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
-        <%= meeting.status %>
-        <!-- extend to only allowing it when user is involved -->
-        <% can_cancel = meeting.status != "cancelled" %>
-        <!-- extend to only allowing it to creator -->
-        <% can_confirm = meeting.status == "pending" %>
-        <!-- extend to only allowing this to user who deleted it previously -->
-        <% can_undo = meeting.status == "cancelled" %>
-        <% if can_cancel && policy(meeting).update? %>
-          <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
-        <% end %>
-        <% if (can_confirm && policy(meeting).update?) && @creator == current_user %>
-          <%= link_to 'confirm run', run_meeting_path(meeting.run, meeting, status: "confirmed"), method: :patch %>
-        <% end %>
-        <% if (can_undo && policy(meeting).update?) && current_user.id.to_i == params[:sender].to_i %>
-          <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
-        <% end %>
-      <% end %>
-      </li>
-    </ul>
-  </div>
+<% if current_user == @creator %>
+<ul class="">
+  <h4>Wanting to join:</h4>
+  <% @meetings.sort.each do |meeting|%><!-- creator has admin-type access to joins -->
+  <li class="mb-2">
+    <% user = User.find(meeting.user_id) %>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+    <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
+    <%= meeting.status %>
+    <% can_cancel = meeting.status != "cancelled" %>
+    <% can_confirm = meeting.status == "pending" %>
+    <% can_undo = meeting.status == "cancelled" %>
+    <% if can_cancel && policy(meeting).update? %>
+      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <% if (can_confirm && policy(meeting).update?) && @creator == current_user %>
+      <%= link_to 'confirm run', run_meeting_path(meeting.run, meeting, status: "confirmed"), method: :patch %>
+    <% end %>
+    <% if (can_undo && policy(meeting).update?) && current_user.id.to_i == params[:sender].to_i %>
+      <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
+    <% end %>
+  <% end %>
+  </li>
+</ul>
+<% elsif user_signed_in? %>
+<ul class="">
+  <h4>Already joining:</h4><!-- user can only see confirmed joins and his own qith status -->
+  <% personal_met = [] %>
+  <% @meetings.each { |met| personal_met << met if met.user_id == current_user.id } %>
+  <% personal_met.sort.each do |meeting|%>
+  <li class="mb-2">
+    <% user = User.find(meeting.user_id) %>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+    <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
+    <%= meeting.status %>
+    <% can_cancel = meeting.status != "cancelled" %>
+    <% can_undo = meeting.status == "cancelled" %>
+    <% if can_cancel && policy(meeting).update? %>
+      <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <% if (can_undo && policy(meeting).update?) && current_user.id.to_i == params[:sender].to_i %>
+      <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
+    <% end %>
+  <% end %>
+  <% met_off = [] %>
+  <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled" || meeting.user_id == current_user.id } %>
+  <% met_off.sort.each do |meeting|%>
+    <li class="mb-2">
+      <% user = User.find(meeting.user_id) %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
+      <%= meeting.status %>
+    <% end %>
+    </li>
+  </li>
+</ul>
+<% else %><!-- when a user is not signed in, he can only see confirmed joins -->
+  <ul>
+    <h4>Already joining:</h4>
+    <% met_off = [] %>
+    <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled"} %>
+    <% met_off.each do |meeting|%>
+    <li class="mb-2">
+      <% user = User.find(meeting.user_id) %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+      <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
+      <%= meeting.status %>
+    <% end %>
+    </li>
+  </ul>
 <% end %>
+<hr>
+
 
