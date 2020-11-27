@@ -14,15 +14,14 @@
         <% user = buddy_connection.user_1 %>
         <div class="card-trip">
           <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80">
-            <div style="display: flex" class="card-trip-infos">
+            <div class=" d-flex justify-content-between card-trip-infos">
               <div>
                 <h2>Name: <%= user.name %></h2>
                 <p>Birthday: <%= user.birthday %></p>
                 <p>Gender: <%= user.gender %></p>
                 <p>Running Level: <%= user.running_level %></p>
-                  <%#= link_to "Unbuddy", "/users/#{@creator.user_id}/buddy_connections/#{buddy_connection.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "button-green" %>
-                   <%= link_to "Unbuddy", user_buddy_connection_path(id: buddy_connection.id), method: "DELETE", data: { confirm: "Are you sure?" }, class: "button-rosa" %>
               </div>
+              <%= link_to "Unbuddy", user_buddy_connection_path(id: buddy_connection.id), method: "DELETE", data: { confirm: "Are you sure?" }, class: "button-rosa" %>
             </div>
         </div>
       <% end %>
