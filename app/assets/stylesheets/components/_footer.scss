@@ -13,10 +13,10 @@
   width: 100%;
 }
 
-// .footer-action {
-//   display: flex;
-//   align-items: center;
-// }
+.footer .footer-brand img {
+  width: 40px;
+}
+
 .footer-action a {
   color: black;
   opacity: 0.15;
@@ -27,6 +27,16 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
+
+.far {
+  color: #5b8266
+}
+
+.fas {
   color: #5b8266;
+}
+
+.fa-plus-square {
+  color: #9ff019;
+  font-size: large;
 }
