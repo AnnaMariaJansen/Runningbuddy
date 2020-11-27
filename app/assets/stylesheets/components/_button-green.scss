@@ -1,18 +1,20 @@
 .button-green {
-  background-color: #5B8266;
-  color: #FFEBD6;
+  background-color: #9EF019;
+  color: #ffffff;
   border-radius: 6px;
-  border:1px solid #5B8266;
+  border:1px solid #9EF019;
   text-align: center;
   text-decoration: none;
   padding:4px;
-  font-size: 14px;
-  transition: 0.5s
-}
+  font-size: 15px;
+  transition: 0.5s;
+  flex-grow: 0;
+  height: 40px;
+  }
 .button-green:hover {
   text-decoration: none;
   background-color:#FFEBD6;
-  color: #5B8266;
+  color: #9EF019;
   box-shadow: 2px 3px 20px lightgrey;
 }
 
