@@ -8,10 +8,10 @@
 
   <div class="user-info">
     <h3>Details</h3>
-    <p>Name:<%= @creator.name %></p>
-    <p>Gender:<%= @creator.gender %></p>
-    <p>Birthday:<%= @creator.birthday %></p>
-    <p>Running Level:<%= @creator.running_level %></p>
+    <p>Name:  <%= @creator.name %></p>
+    <p>Gender:  <%= @creator.gender %></p>
+    <p>Birthday:  <%= @creator.birthday %></p>
+    <p>Running Level:  <%= @creator.running_level %></p>
   </div>
 
   <div class="last-runs">
@@ -29,6 +29,7 @@
     <%= link_to "Back", users_path, class: "button-green" %>
 
     <%= link_to "Buddy up!", user_buddy_connections_path(user_id: @creator.id), method: "POST", class: "button-rosa" %>
+
   </div>
 </div>
 

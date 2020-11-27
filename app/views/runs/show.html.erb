@@ -1,36 +1,34 @@
-<div class="container mt-3 justify-content-center">
-  <h1>Run by <%= @creator.email %></h1> <!-- change to name once implemented -->
-  <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" alt="placeholder map" class="map">
-</div>
-<hr>
-<div class="container mt-3"></div>
-  <ul>
-    <li><h5>Run details</h5></li>
-    <li><h6>Date: <%= @run.date %></h6></li>
-    <li><h6>Location: <%= @run.location %></h6></li>
-    <li><h6>Route: <%= @run.route %></h6></li>
-    <li><h6>Length: <%= @run.length %></h6></li>
-    <li><h6>Pace: <%= @run.pace %></h6></li>
-    <li><h6>Duration: <%= @run.duration %></h6></li>
-  </ul>
-  <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
-</div>
-<hr>
-<% if user_signed_in? %>
-  <div class="container mt-3 meetings-associated">
+<div class="detail-info">
+  <div class="user d-flex flex-wrap">
+    <h1 class="creator-tag">Run by <%= link_to "#{@creator.email}", user_path(@creator) %></h1> <!-- change to name once implemented -->
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "ml-2 avatar", alt: "avatar" %>
+  </div>
+  <div>
+    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" alt="placeholder map" class="map">
+  </div>
+  <div class="user-info">
     <ul>
-      <h4>Already joining:</h4>
-      <% @meetings.sort.each do |meeting|%>
+      <li><h3>Run details</h3></li>
+      <li><p>Date: <em class="lighter"> <%= @run.date %></em></p></li>
+      <li><p>Location: <em class="lighter"> <%= @run.location %></em></p></li>
+      <li><p>Route: <em class="lighter"> <%= @run.route %></em></p></li>
+      <li><p>Length: <em class="lighter"> <%= @run.length %></em></p></li>
+      <li><p>Pace: <em class="lighter"> <%= @run.pace %></em></p></li>
+      <li><p>Duration: <em class="lighter"> <%= @run.duration %></em></p></li>
+    </ul>
+  </div>
+  <div class="last-runs">
+    <% if current_user == @creator %>
+    <ul class="">
+      <h4>Wanting to join:</h4>
+      <% @meetings.sort.each do |meeting|%><!-- creator has admin-type access to joins -->
       <li class="mb-2">
         <% user = User.find(meeting.user_id) %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-        <%= user.email + " also joined the run"%> |  <!-- change to name once implemented -->
+        <%= user.email + " also joined"%> |  <!-- change to name once implemented -->
         <%= meeting.status %>
-        <!-- extend to only allowing it when user is involved -->
         <% can_cancel = meeting.status != "cancelled" %>
-        <!-- extend to only allowing it to creator -->
         <% can_confirm = meeting.status == "pending" %>
-        <!-- extend to only allowing this to user who deleted it previously -->
         <% can_undo = meeting.status == "cancelled" %>
         <% if can_cancel && policy(meeting).update? %>
           <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
@@ -44,6 +42,58 @@
       <% end %>
       </li>
     </ul>
+    <% elsif user_signed_in? %>
+    <ul class="">
+      <h4>Already joining:</h4><!-- user can only see confirmed joins and his own qith status -->
+      <% personal_met = [] %>
+      <% @meetings.each { |met| personal_met << met if met.user_id == current_user.id } %>
+      <% personal_met.sort.each do |meeting|%>
+      <li class="mb-2">
+        <% user = User.find(meeting.user_id) %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+        <%= user.email + " also joined"%> |  <!-- change to name once implemented -->
+        <%= meeting.status %>
+        <% can_cancel = meeting.status != "cancelled" %>
+        <% can_undo = meeting.status == "cancelled" %>
+        <% if can_cancel && policy(meeting).update? %>
+          <%= link_to 'cancel run', run_meeting_path(meeting.run, meeting, status: "cancelled", sender: current_user.id), method: :patch, data: { confirm: "Are you sure?" } %>
+        <% end %>
+        <% if (can_undo && policy(meeting).update?) && current_user.id.to_i == params[:sender].to_i %>
+          <%= link_to 'undo', run_meeting_path(meeting.run, meeting, status: "pending"), method: :patch %>
+        <% end %>
+      <% end %>
+      <% met_off = [] %>
+      <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled" || meeting.user_id == current_user.id } %>
+      <% met_off.sort.each do |meeting|%>
+        <li class="mb-2">
+          <% user = User.find(meeting.user_id) %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+          <%= user.email + " also joined"%> |  <!-- change to name once implemented -->
+          <%= meeting.status %>
+        <% end %>
+        </li>
+      </li>
+    </ul>
+    <% else %><!-- when a user is not signed in, he can only see confirmed joins -->
+      <ul>
+        <h4>Already joining:</h4>
+        <% met_off = [] %>
+        <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled"} %>
+        <% met_off.each do |meeting|%>
+        <li class="mb-2">
+          <% user = User.find(meeting.user_id) %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+          <%= user.email + " also joined"%> |  <!-- change to name once implemented -->
+          <%= meeting.status %>
+        <% end %>
+        </li>
+      </ul>
+    <% end %>
   </div>
-<% end %>
+  <div class="buttons-bottom">
+    <%= link_to "Back", :back, class: "button-green" %>
+    <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
+  </div>
+</div>
+
 
