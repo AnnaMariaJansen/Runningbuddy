@@ -3,7 +3,7 @@
 
   <div class="user d-flex flex-wrap">
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-      <h2><%= @creator.email %></h2>
+      <h2><%= @creator.name %></h2>
   </div>
 
   <div class="user-info">
@@ -15,7 +15,7 @@
   </div>
 
   <div class="last-runs">
-    <h3><%= @creator.email %> last Runs:</h3>
+    <h3><%= @creator.name %>'s last Runs:</h3>
       <ul>
         <% @meetings.each do |meeting| %>
           <li>
