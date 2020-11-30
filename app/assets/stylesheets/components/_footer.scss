@@ -44,5 +44,10 @@
 }
 .fa-plus-square {
   color: #9ff019;
-  font-size: large;
+  font-size: 35px;
+  transition: 1s;
 }
+.fa-plus-square:hover {
+  color: #5b8266;
+}
+
