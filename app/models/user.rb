@@ -6,5 +6,6 @@ class User < ApplicationRecord
   has_many :meetings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :buddy_connections, dependent: :destroy
+
   has_one_attached :photo
 end
