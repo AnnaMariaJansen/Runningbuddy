@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_100626) do
-
+ActiveRecord::Schema.define(version: 2020_11_30_141256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_100626) do
     t.date "birthday"
     t.string "gender"
     t.integer "running_level"
-    t.string "avatar_url", default: "https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png"
+    t.string "avatar_url", default: "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
