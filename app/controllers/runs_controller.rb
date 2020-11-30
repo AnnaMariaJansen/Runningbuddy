@@ -11,6 +11,13 @@ class RunsController < ApplicationController
     # else
       # @runs = policy_scope(Run)
     # end
+    # @markers = @runs.geocoded.map do |run|
+    #   {
+    #   lat: run.latitude,
+    #   lng: run.longitude,
+    #   infoWindow: render_to_string(partial: "info_window", locals: { run: run })
+    # }
+    # end
   end
 
   def show
@@ -19,6 +26,14 @@ class RunsController < ApplicationController
     # => just to test whether meetings are in fact created
     @meetings = Meeting.where(run_id: params[:id])
     # ------------------------------------------------
+    @run = Run.find(params[:id])
+    @run_coordinates = @run.geocode
+
+    @markers = [{
+      lat: @run_coordinates[0],
+      lng: @run_coordinates[1]
+    }]
+
   end
 
   def new
