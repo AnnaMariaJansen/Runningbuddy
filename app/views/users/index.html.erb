@@ -4,7 +4,11 @@
       <div class="card-trip-container">
         <% @users.each do |user| %>
           <div class="card-trip">
-            <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80">
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, width: 400, height: 300 %>
+            <% else %>
+              <%= cl_image_tag("Ruby_8Wochen_ep02pc", width: 400, height: 300) %>
+            <% end %>
 
               <div style="display: flex" class="card-trip-infos">
                 <div>

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :buddy_connections, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_one_attached :photo
 end
