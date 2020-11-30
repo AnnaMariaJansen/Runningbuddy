@@ -1,0 +1,33 @@
+<% if current_user == @chatroom.buddy_connection.user_1 %>
+<!-- can add user avatar here too once implemented -->
+  <h1> <%= "Chat with #{@chatroom.buddy_connection.user_2.name}" %></h1>
+<% else %>
+  <h1> <%= "Chat with #{@chatroom.buddy_connection.user_1.name}" %></h1>
+<% end %>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span><%= message.user.email %></span>
+        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+      </i>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+<% if current_user == @chatroom.buddy_connection.user_1 %>
+<!-- can add user avatar here too once implemented -->
+  <%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
+    <%= f.button :submit, class: "button-rosa" %>
+  <% end %>
+<% else %>
+  <%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
+    <%= f.button :submit, class: "button-rosa" %>
+  <% end %>
+<% end %>
+
+<div class="buttons-bottom">
+  <%= link_to "Back", :back, class: "button-green" %>
+</div>
