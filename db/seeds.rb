@@ -23,7 +23,7 @@ meeting_three = Meeting.create!(user_id: user_three.id, run_id: run_three.id)
 user_four = User.create!(email: 'anna@example.com', password: '123456', name: "Anna" , birthday: "11.05.1989" , gender: "F" , running_level: 3 )
 run_four = Run.create!(route: 'Tegernsee', length: '9', pace: "average", duration: "60 min", date: "29.11.2020", location: "Tegernsee, Bayern, Deutschland", user_id: user_four.id)
 meeting_four = Meeting.create!(user_id: user_four.id, run_id: run_four.id)
-review_four = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_four.id , meeting_id: meeting_four.id)
+# review_four = Review.create!(vibe_rating: "cool", route_rating: "too full", challenge_rating: "easy", user_id: user_four.id , meeting_id: meeting_four.id)
 
 user_five = User.create!(email: 'benjamin@example.com', password: '123456', name: "Benjamin" , birthday: "03.11.1995" , gender: "M" , running_level: 2 )
 run_five = Run.create!(route: 'Frötmaninger Heide ', length: '11', pace: "relaxed", duration: "hour and a half", date: "10.12.2020", location: "Admiralbogen 47, 80939 München", user_id: user_five.id)
