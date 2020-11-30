@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_100626) do
+ActiveRecord::Schema.define(version: 2020_11_30_134936) do
 
 
   # These are extensions that must be enabled in order to support this database
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2020_11_30_100626) do
     t.index ["user_2_id"], name: "index_buddy_connections_on_user_2_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "buddy_connection_id"
+    t.index ["buddy_connection_id"], name: "index_chatrooms_on_buddy_connection_id"
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,6 +62,16 @@ ActiveRecord::Schema.define(version: 2020_11_30_100626) do
     t.string "status", default: "pending", null: false
     t.index ["run_id"], name: "index_meetings_on_run_id"
     t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -102,9 +120,12 @@ ActiveRecord::Schema.define(version: 2020_11_30_100626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chatrooms", "buddy_connections"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "meetings", "runs"
   add_foreign_key "meetings", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "runs", "runs", column: "parent_id"
   add_foreign_key "runs", "users"
 end
