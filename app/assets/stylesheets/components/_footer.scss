@@ -29,13 +29,19 @@
 }
 
 .far {
-  color: #5b8266
+  color: #5b8266;
+  font-size: 25px;
 }
-
+.far:hover {
+  color: #9ff019;
+}
 .fas {
   color: #5b8266;
+  font-size: 25px;
 }
-
+.fas:hover {
+  color: #9ff019;
+}
 .fa-plus-square {
   color: #9ff019;
   font-size: large;
