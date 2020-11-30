@@ -4,6 +4,8 @@ class RunsController < ApplicationController
   def index
     # @runs = Run.all
     @runs = policy_scope(Run)
+    # so dann in categories
+    @runs_5 = policy_scope(Run).where(length: 5)
     # if params[:query].present?
     #   # sql_query = "route ILIKE :query OR length ILIKE :query"
     #   # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
@@ -11,13 +13,12 @@ class RunsController < ApplicationController
     # else
       # @runs = policy_scope(Run)
     # end
-    # @markers = @runs.geocoded.map do |run|
-    #   {
-    #   lat: run.latitude,
-    #   lng: run.longitude,
-    #   infoWindow: render_to_string(partial: "info_window", locals: { run: run })
-    # }
-    # end
+    @markers = @runs.geocoded.map do |run|
+       {
+       lat: run.latitude,
+       lng: run.longitude
+     }
+     end
   end
 
   def show

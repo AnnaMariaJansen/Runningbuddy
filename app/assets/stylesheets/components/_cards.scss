@@ -1,5 +1,6 @@
 body {
   background: rgba(255, 235, 214, 0.3);
+  margin-bottom: 151px;
 }
 
 .card-trip-container {
@@ -14,6 +15,7 @@ body {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 30px 2% 0;
+  width: 400px;
 }
 
 .card-trip > img {
@@ -43,9 +45,7 @@ body {
   color: #003844;
   opacity: .7;
   margin: 0;
-
 }
-
 
 .card-trip-infos .card-trip-user {
   position: absolute;
@@ -69,17 +69,3 @@ body {
 #small-map {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
