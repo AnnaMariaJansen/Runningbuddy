@@ -6,6 +6,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    true # x change to check if users in chatrooms are buddies
+    record.buddy_connection.user_1_id == user.id || record.buddy_connection.user_2_id == user.id
   end
 end

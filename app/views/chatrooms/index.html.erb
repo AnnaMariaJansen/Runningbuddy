@@ -6,14 +6,16 @@
 <% else %>
   <% @chatrooms.each do |chat| %>
     <ul>
-      <li>
-        <% if current_user == chat.buddy_connection.user_1 %>
-        <!-- can add user avatar here too once implemented -->
-          <%= link_to "#{chat.buddy_connection.user_2.name}", chatroom_path(chat) %>
-        <% else %>
-          <%= link_to "#{chat.buddy_connection.user_1.name}", chatroom_path(chat) %>
-        <% end %>
-      </li>
+      <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
+        <li>
+          <% if current_user == chat.buddy_connection.user_1 %>
+          <!-- can add user avatar here too once implemented -->
+            <%= link_to "#{chat.buddy_connection.user_2.name}", chatroom_path(chat) %>
+          <% else %>
+            <%= link_to "#{chat.buddy_connection.user_1.name}", chatroom_path(chat) %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   <% end %>
 <% end %>
