@@ -3,9 +3,9 @@
     <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator) %></h1> <!-- change to name once implemented -->
     <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "ml-2 avatar", alt: "avatar" %>
   </div>
-
-  <div id="map"
+  <div id="map-<%=@run.id %>" class="maps"
      style="width: 50%; height: 400px; ml-3"
+     data-run-id="<%= @run.id %>"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>

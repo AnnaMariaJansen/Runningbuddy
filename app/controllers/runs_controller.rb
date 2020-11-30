@@ -11,13 +11,12 @@ class RunsController < ApplicationController
     # else
       # @runs = policy_scope(Run)
     # end
-    # @markers = @runs.geocoded.map do |run|
-    #   {
-    #   lat: run.latitude,
-    #   lng: run.longitude,
-    #   infoWindow: render_to_string(partial: "info_window", locals: { run: run })
-    # }
-    # end
+    @markers = @runs.geocoded.map do |run|
+       {
+       lat: run.latitude,
+       lng: run.longitude
+     }
+     end
   end
 
   def show

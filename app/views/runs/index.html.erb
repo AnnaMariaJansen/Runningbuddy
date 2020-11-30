@@ -3,12 +3,12 @@
     <div>
       <div class="card-trip-container">
         <% @runs.each do |run| %>
-          <div class="card-trip">
-
-            <div id="small-map"
-              style="width: 50%; height: 200px; ml-5"
-              data-markers="<%= @markers.to_json %>"
-              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          <div class="card-trip" style="width: 600px, height: 400px">
+            <div id="map-<%=run.id %>" class="maps"
+              style="width: 100%; height: 200px"
+              data-run-id="<%= run.id %>"
+              data-markers="<%= [{lat: run.geocode[0], lng: run.geocode[1]}].to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>", class="mapboxgl-map">
             </div>
 
               <div style="display: flex" class="card-trip-infos">
