@@ -3,9 +3,13 @@
     <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator) %></h1> <!-- change to name once implemented -->
     <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "ml-2 avatar", alt: "avatar" %>
   </div>
-  <div>
-    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" alt="placeholder map" class="map">
+
+  <div id="map"
+     style="width: 50%; height: 400px; ml-3"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
   <div class="user-info">
     <ul>
       <li><h3>Run details</h3></li>
@@ -95,5 +99,8 @@
     <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
   </div>
 </div>
+
+
+
 
 

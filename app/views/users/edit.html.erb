@@ -1,0 +1,14 @@
+<div class="edit-user-container mt-4">
+  <div class="col-12">
+    <h3>Edit your profile</h3>
+    <%= simple_form_for(@user) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :birthday %>
+    <%= f.input :gender %>
+    <%= f.input :running_level %>
+    <%= f.input :avatar_url, as: :string %>
+    <%= f.submit class: "button-rosa" %>
+    <% end %>
+  <%#= link_to "User", user_path, class: "btn btn-ghost" %>
+ </div>
+</div>
