@@ -4,6 +4,8 @@ class RunsController < ApplicationController
   def index
     # @runs = Run.all
     @runs = policy_scope(Run)
+    # so dann in categories
+    @runs_5 = policy_scope(Run).where(length: 5)
     # if params[:query].present?
     #   # sql_query = "route ILIKE :query OR length ILIKE :query"
     #   # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
