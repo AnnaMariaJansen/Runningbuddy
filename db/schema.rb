@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_082400) do
+ActiveRecord::Schema.define(version: 2020_11_30_134936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_082400) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "buddy_connection_id"
+    t.index ["buddy_connection_id"], name: "index_chatrooms_on_buddy_connection_id"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_082400) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chatrooms", "buddy_connections"
   add_foreign_key "meetings", "runs"
   add_foreign_key "meetings", "users"
   add_foreign_key "messages", "chatrooms"

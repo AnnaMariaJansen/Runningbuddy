@@ -1,8 +1,19 @@
 <h1>Chatrooms</h1>
-<% @chatrooms.each do |chat| %>
-  <ul>
-    <li>
-      <%= link_to "#{chat.name}", chatroom_path(chat) %>
-    </li>
-  </ul>
+<% if @chatrooms == [] %>
+  <%= "Oh no! You don´t have any Buddies jet..." %>
+  <hr>
+<%= link_to "Find new buddies here!", users_path %>
+<% else %>
+  <% @chatrooms.each do |chat| %>
+    <ul>
+      <li>
+        <% if current_user == chat.buddy_connection.user_1 %>
+        <!-- can add user avatar here too once implemented -->
+          <%= link_to "#{chat.buddy_connection.user_2.name}", chatroom_path(chat) %>
+        <% else %>
+          <%= link_to "#{chat.buddy_connection.user_1.name}", chatroom_path(chat) %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
 <% end %>

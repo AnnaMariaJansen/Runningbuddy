@@ -6,14 +6,6 @@ class BuddyConnectionsController < ApplicationController
     @buddies = all_buds.where(user_1_id: current_user) + all_buds.where(user_2_id: current_user)
   end
 
-  def show
-    # leaving blank for now, don´t see the point atm
-  end
-
-  def edit
-    # don´t see why we need this either, especially without an update?
-  end
-
   def create
     # guessing this is triggered by a button on the show page
     # therefor can't test this rn
@@ -23,6 +15,7 @@ class BuddyConnectionsController < ApplicationController
     @buddy_connection.user_1 = @creator
     @buddy_connection.user_2 = @joiner
     if @buddy_connection.save #flash saying buddy connection worked
+      @chatroom = Chatroom.create!(name: "#{@creator.name} + #{@joiner.name}", buddy_connection: @buddy_connection)
       flash.alert = "You and #{@creator.name} are now running buddies!"
     else
       flash.alert = "You are already buddies with #{@creator.name}!"
