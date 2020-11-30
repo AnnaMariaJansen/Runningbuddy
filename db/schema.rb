@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_11_30_134936) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,15 +74,15 @@ ActiveRecord::Schema.define(version: 2020_11_30_134936) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "meeting_id"
-    t.bigint "user_id"
-    t.integer "vibe_rating"
-    t.integer "route_rating"
-    t.integer "challenge_rating"
+    t.bigint "meeting_id_id"
+    t.bigint "user_id_id"
+    t.string "vibe_rating"
+    t.string "route_rating"
+    t.string "challenge_rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["meeting_id"], name: "index_reviews_on_meeting_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["meeting_id_id"], name: "index_reviews_on_meeting_id_id"
+    t.index ["user_id_id"], name: "index_reviews_on_user_id_id"
   end
 
   create_table "runs", force: :cascade do |t|
@@ -120,8 +119,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_134936) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "chatrooms", "buddy_connections"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "buddy_connections"
   add_foreign_key "meetings", "runs"
   add_foreign_key "meetings", "users"
   add_foreign_key "messages", "chatrooms"
