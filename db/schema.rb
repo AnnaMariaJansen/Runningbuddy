@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_153648) do
+ActiveRecord::Schema.define(version: 2020_11_30_082400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2020_11_25_153648) do
     t.index ["user_2_id"], name: "index_buddy_connections_on_user_2_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,6 +38,16 @@ ActiveRecord::Schema.define(version: 2020_11_25_153648) do
     t.string "status", default: "pending", null: false
     t.index ["run_id"], name: "index_meetings_on_run_id"
     t.index ["user_id"], name: "index_meetings_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -81,6 +97,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_153648) do
 
   add_foreign_key "meetings", "runs"
   add_foreign_key "meetings", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "runs", "runs", column: "parent_id"
   add_foreign_key "runs", "users"
 end
