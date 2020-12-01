@@ -1,7 +1,21 @@
-<div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <span><%= message.user.email %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-  </i>
-  <p><%= message.content %></p>
-</div>
+<%# if message.user_id == current_user.id  %>
+  <div class="ml-3 mr-3 flex-row">
+      <div class="message-container-you" id="message-<%= message.id %>">
+        <i class="author">
+          <span><%= message.user.name %></span>
+          <span><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></span>
+        </i>
+        <div class="message-line-you">
+          <p class="message-bubble-you"><%= message.content %></p>
+        </div>
+      </div>
+  </div>
+<%# else %>
+<!--   <div class="message-container-you" id="message-<%= message.id %>">
+    <i class="author">
+      <span><%#= message.user.name %></span>
+      <span><%#= message.created_at.strftime("%a %b %e at %l:%M%p") %></span>
+    </i>
+    <p class="message-bubble-you"><%= message.content %></p>
+  </div> -->
+<%# end %>
