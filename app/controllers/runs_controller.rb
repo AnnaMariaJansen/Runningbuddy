@@ -13,12 +13,6 @@ class RunsController < ApplicationController
     # else
       # @runs = policy_scope(Run)
     # end
-    @markers = @runs.geocoded.map do |run|
-      {
-       lat: run.latitude,
-       lng: run.longitude
-      }
-     end
   end
 
   def show
@@ -34,7 +28,6 @@ class RunsController < ApplicationController
       lat: @run_coordinates[0],
       lng: @run_coordinates[1]
     }]
-
   end
 
   def new
@@ -46,7 +39,7 @@ class RunsController < ApplicationController
     @run = Run.new(run_params)
     @run.user_id = current_user.id
     if @run.save
-      redirect_to runs_path(@run)
+      redirect_to runs_path
     else
       render :new
     end
