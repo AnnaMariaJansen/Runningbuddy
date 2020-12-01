@@ -11,19 +11,23 @@
    <!--  <%# end %> -->
     <h2><%= @creator.name %></h2>
   </div>
-
-  <div class="user-info">
-    <h3>Details</h3>
-    <p>Name:  <%= @creator.name %></p>
-    <p>Gender:  <%= @creator.gender %></p>
-    <p>Birthday:  <%= @creator.birthday %></p>
-    <p>Running Level:  <%= @creator.running_level %></p>
-
-    <% if @creator.photo.attached?%>
-      <%= cl_image_tag @creator.photo.key, width: 300, height: 200, crop: :fill %>
-    <% else %>
-      <%= cl_image_tag("runner_cmnhbm", width: 200, height: 300, crop: :fill) %>
-    <% end %>
+  <div>
+    <div class="user-info col-12" style="display: flex">
+      <div>
+        <h3>Details</h3>
+        <p>Name:  <%= @creator.name %></p>
+        <p>Gender:  <%= @creator.gender %></p>
+        <p>Birthday:  <%= @creator.birthday %></p>
+        <p>Running Level:  <%= @creator.running_level %></p>
+      </div>
+      <div class="user-photo">
+        <% if @creator.photo.attached?%>
+          <%= cl_image_tag @creator.photo.key, width: 300, height: 200, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag("runner_cmnhbm", width: 200, height: 300, crop: :fill) %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="last-runs">
