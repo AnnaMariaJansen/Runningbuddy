@@ -7,7 +7,7 @@
   <!-- <h1> <%#= "Chat with #{@chatroom.buddy_connection.user_1.name}" %></h1> -->
 <% end %>
 <div class="message-container" id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
+  <% @chatroom.messages.sort.each do |message| %>
     <% if message.user == current_user  %>
       <div class="ml-3 mr-3 flex-row-reverse">
           <div class="message-container-me" id="message-<%= message.id %>">

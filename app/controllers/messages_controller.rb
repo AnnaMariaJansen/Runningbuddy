@@ -15,6 +15,14 @@ class MessagesController < ApplicationController
     end
   end
 
+  def readcheck
+    # updates the read status to true
+    raise
+    # chatroom_id: chatCard.dataset.chatroom, user_id: chatCard.dataset.user
+    # @messages_viewed = Message.where(chatroom: params[:chatroom_id], user: User.find(params[:user_id]))
+    # @messages_viewed.each { |mes| mes.read = true }
+  end
+
   private
 
   def message_params
