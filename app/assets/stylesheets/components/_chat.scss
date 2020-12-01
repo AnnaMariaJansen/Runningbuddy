@@ -1,0 +1,43 @@
+.message-bubble-me {
+  background-color: #9EF019;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: right;
+  display: inline-block;
+  box-shadow: 1px 2px 15px lightgrey;
+
+}
+.message-bubble-you {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: left;
+  display: inline-block;
+  box-shadow: 1px 2px 15px lightgrey;
+}
+.author {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.message-container {
+  // display: inline-block;
+
+}
+.message-container-me {
+  text-align: right;
+
+}
+.message-container-you {
+  // display: inline-block;
+  text-align: left;
+}
+.text-bar-send {
+  border-radius: 5px;
+  width: 70%;
+  box-shadow: 2px 3px 15px lightgrey;
+  border: white;
+}
+
+
+
+
