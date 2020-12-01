@@ -4,6 +4,7 @@
 Meeting.delete_all
 Run.delete_all
 User.delete_all
+Message.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1 )
 run_one = Run.create!(route: 'Schlosspark Nymphenburg', length: '7', pace: "slow", duration: "70 min", date: "28.11.2020", location: "Schloß Nymphenburg 1, 80638 München", user_id: user_one.id)

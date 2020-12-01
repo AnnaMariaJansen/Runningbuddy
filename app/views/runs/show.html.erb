@@ -2,9 +2,9 @@
   <div class="user d-flex flex-wrap">
     <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator) %></h1> <!-- change to name once implemented -->
         <% if @creator.photo.attached? %>
-          <%= cl_image_tag @creator.photo.key, class: "avatar-large", alt: "avatar-large" %>
+          <%= cl_image_tag @creator.photo.key, class: "avatar-large ml-3", alt: "avatar-large" %>
         <% elsif @creator.avatar_url != ""%>
-          <%= image_tag @creator.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag @creator.avatar_url, class: "avatar dropdown-toggle ml-3", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
         <% end %>
@@ -125,7 +125,7 @@
     <% end %>
   </div>
   <div class="buttons-bottom">
-    <%= link_to "Back", :back, class: "button-green" %>
+    <%= link_to "Back", runs_path, class: "button-rosa" %>
     <% if user_signed_in? %>
       <% user_1_iam = [] %>
       <% @meetings.each do |met| %>
@@ -133,10 +133,10 @@
       <% end %>
       <% not_joinable = user_1_iam.include?(true) %>
       <% unless not_joinable %>
-        <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
+        <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
       <% end %>
     <% else %>
-      <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
+      <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
     <% end %>
   </div>
 </div>

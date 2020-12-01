@@ -25,9 +25,19 @@
   color: transparent;
   text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
   font-size: 4.2vh !important;
-}  
+}
 
 .navbar-lewagon .nav-link {
   margin: 0;
   color: #9EF019;
 }
+
+.dropdown-item {
+  color: #015460;
+}
+
+.dropdown-item:hover {
+  color: #008296;
+  text-decoration: none;
+}
+
