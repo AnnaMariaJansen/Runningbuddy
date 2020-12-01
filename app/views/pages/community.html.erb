@@ -1,11 +1,11 @@
 <div class="run-container mt-4" style="color: #015460">
   <h1>Community</h1>
-    <div class="community">
-        <% if current_user.name %>
-          <%= link_to "Browse other Runners", users_path, class: "button-green" %>
-          <%= link_to "Chats", chatrooms_path, class: "button-green" %>
-        <% else %>
-          <%= link_to "Make profile visible to other runners", "/users/:id/edit", class: "button-green" %>
-        <% end %>
-    </div>
 </div>
+<% if current_user.name %>
+  <div class="com-options">
+    <%= link_to "Browse other Runners", users_path, class: "button-com m-3" %>
+    <%= link_to "Chats", chatrooms_path, class: "button-com m-3" %>
+  </div>
+<% else %>
+  <%= link_to "Edit to Make profile visible to other runners", "/users/:id/edit", class: "button-green p-3 center-block" %>
+<% end %>

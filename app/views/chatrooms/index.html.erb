@@ -1,32 +1,31 @@
 <h1>Chatrooms</h1>
-<h3><%= "(You have #{@messages_unread.count} unread messages)"%></h3>
 <% @chatrooms.each do |chat| %>
-    <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
-        <% if current_user == chat.buddy_connection.user_1 %>
-        <!-- can add user avatar here too once implemented -->
+  <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
+      <% if current_user == chat.buddy_connection.user_1 %>
+      <!-- can add user avatar here too once implemented -->
+        <%= link_to chatroom_path(chat), class: "cardlink", 'data-chatroom': chat.id, 'data-user': current_user.id do %>
+          <div class="card-product">
+            <%= image_tag chat.buddy_connection.user_2.avatar_url %>
+            <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
+            <div class="card-product-infos">
+              <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+              <p>most recent message if possible?</p>
+            </div>
+          </div>
+        <% end %>
+        <% else %>
           <%= link_to chatroom_path(chat), class: "cardlink", 'data-chatroom': chat.id, 'data-user': current_user.id do %>
             <div class="card-product">
-              <%= image_tag chat.buddy_connection.user_2.avatar_url %>
+              <%= image_tag chat.buddy_connection.user_1.avatar_url %>
               <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
               <div class="card-product-infos">
-                <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+                <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
                 <p>most recent message if possible?</p>
               </div>
             </div>
           <% end %>
-          <% else %>
-            <%= link_to chatroom_path(chat), class: "cardlink", 'data-chatroom': chat.id, 'data-user': current_user.id do %>
-              <div class="card-product">
-                <%= image_tag chat.buddy_connection.user_1.avatar_url %>
-                <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
-                <div class="card-product-infos">
-                  <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
-                  <p>most recent message if possible?</p>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-    <% end %>
+        <% end %>
+  <% end %>
 <% end %>
 <hr>
 <div style="text-align: center;">
