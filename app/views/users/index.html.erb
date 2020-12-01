@@ -3,25 +3,36 @@
     <div>
       <div class="card-trip-container">
         <% @users.each do |user| %>
-          <div class="card-trip">
-            <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, width: 400, height: 300 %>
-            <% else %>
-              <%#= cl_image_tag("runner_cmnhbm", width: 400, height: 300) %>
-              <%= image_tag "greenrunner.png", width: 400, height: 300 %>
-            <% end %>
+          <% if user.name %>
+            <div class="card-trip">
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, width: 400, height: 300 %>
+              <% else %>
+                <%#= cl_image_tag("runner_cmnhbm", width: 400, height: 300) %>
+                <%= image_tag "Running-Buddy-Logo.png", width: 400, height: 300 %>
+              <% end %>
 
-              <div style="display: flex" class="card-trip-infos">
-                <div>
-                  <h2><%= user.name %></h2>
-                  <p>Birthday: <%= user.birthday %></p>
-                  <p>Gender: <%= user.gender %></p>
-                  <p>Running Level: <%= user.running_level %></p>
+                <div style="display: flex" class="card-trip-infos">
+                  <div>
+
+                    <% if user.name %>
+                      <h2><%= user.name %></h2>
+                    <% else %>
+                      <h2>Name:</h2>
+                    <% end %>
+                      <p>Birthday: <%= user.birthday %></p>
+                      <p>Gender: <%= user.gender %></p>
+                      <p>Running Level: <%= user.running_level %></p>
+                    </div>
+
+                    <% if user.name %>
+                      <%= link_to "More", user_path(user), class: "button-green" %>
+                    <% else %>
+                      <%= link_to "Edit profile now", "/users/:id/edit", class: "button-green" %>
+                    <% end %>
                 </div>
-                <%= link_to "More", user_path(user), class: "button-green" %>
-              </div>
-
-          </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
