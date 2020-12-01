@@ -1,6 +1,7 @@
-<div class="sign-up-container">
-  <h2>Sign up</h2>
-
+<div class="sign-up-container ml-3 mr-3" style="color: #015460 !important">
+  <div class="headline mt-5">
+    <h2>Sign up</h2>
+  </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
@@ -19,9 +20,9 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: "button-green mb-3" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <%= render "devise/shared/links", class: "button-rosa" %>
 </div>
