@@ -1,11 +1,14 @@
 #SEEDS YA
-
+require 'open-uri'
 # Review.delete_all
 Meeting.delete_all
 Run.delete_all
 User.delete_all
 
-user_one = User.create!(email: 'soph@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1, avatar_url: "https://avatars0.githubusercontent.com/u/70213059?v=4" )
+user_one = User.create!(email: 'sophtest@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1, avatar_url: "https://avatars0.githubusercontent.com/u/70213059?v=4")
+file = URI.open('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cnVubmluZ3xlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=1296&q=60')
+user_one.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+
 run_one = Run.create!(route: 'Schlosspark Nymphenburg', length: '7', pace: "slow", duration: "70 min", date: "28.11.2020", location: "Schloß Nymphenburg 1, 80638 München", user_id: user_one.id)
 meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
 # review_one = Review.create!(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy", user_id: user_one.id , meeting_id: meeting_one.id)

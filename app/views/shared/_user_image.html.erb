@@ -1,0 +1,7 @@
+<% if user.avatar_url != ""%>
+  <%= image_tag user.avatar_url, class: css_class %>
+<% elsif user.photo.attached? %>
+  <%= cl_image_tag user.photo.key, class: css_class, alt: css_class %>
+<% else %>
+  <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
+<% end %>

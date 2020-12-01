@@ -1,13 +1,7 @@
 <div class="detail-info">
   <div class="user d-flex flex-wrap">
     <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator) %></h1> <!-- change to name once implemented -->
-        <% if @creator.photo.attached? %>
-          <%= cl_image_tag @creator.photo.key, class: "avatar-large", alt: "avatar-large" %>
-        <% elsif @creator.avatar_url != ""%>
-          <%= image_tag @creator.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-        <% end %>
+       <%= render "shared/user_image", user: @creator, css_class: "avatar-large" %>
   </div>
   <div id="map-<%=@run.id %>" class="maps"
      style="width: 50%; height: 400px; ml-3"
@@ -33,15 +27,9 @@
         <h4>Wanting to join:</h4>
         <% @meetings.sort.each do |meeting|%><!-- creator has admin-type access to joins -->
         <li class="mb-2">
-          <% user = User.find(meeting.user_id) %>
-          <% if meeting.user.photo.attached? %>
-            <%= cl_image_tag meeting.user.photo.key, class: "avatar-large", alt: "avatar-large" %>
-          <% elsif meeting.user.avatar_url != ""%>
-            <%= image_tag meeting.user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-          <% end %>
-          <%= user.name + " also joined"%> |  <!-- change to name once implemented -->
+          <%= render "shared/user_image", user: meeting.user, css_class: "avatar-large" %>
+
+          <%= meeting.user.name + " also joined"%> |  <!-- change to name once implemented -->
           <%= meeting.status %>
           <% can_cancel = meeting.status != "cancelled" %>
           <% can_confirm = meeting.status == "pending" %>
@@ -65,15 +53,9 @@
         <% @meetings.each { |met| personal_met << met if met.user_id == current_user.id } %>
         <% personal_met.sort.each do |meeting|%>
         <li class="mb-2">
-          <% user = User.find(meeting.user_id) %>
-          <% if meeting.user.photo.attached? %>
-            <%= cl_image_tag meeting.user.photo.key, class: "avatar-large", alt: "avatar-large" %>
-          <% elsif meeting.user.avatar_url != ""%>
-            <%= image_tag meeting.user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-          <% end %>
-         <%= user.name + " also joined"%> |  <!-- change to name once implemented -->
+          <%= render "shared/user_image", user: meeting.user, css_class: "avatar-large" %>
+
+          <%= meeting.user.name + " also joined"%> |  <!-- change to name once implemented -->
           <%= meeting.status %>
           <% can_cancel = meeting.status != "cancelled" %>
           <% can_undo = meeting.status == "cancelled" %>
@@ -88,15 +70,8 @@
         <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled" || meeting.user_id == current_user.id } %>
         <% met_off.sort.each do |meeting|%>
           <li class="mb-2">
-            <% user = User.find(meeting.user_id) %>
-          <% if meeting.user.photo.attached? %>
-            <%= cl_image_tag meeting.user.photo.key, class: "avatar-large", alt: "avatar-large" %>
-          <% elsif meeting.user.avatar_url != ""%>
-            <%= image_tag meeting.user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-        <% end %>
-        <%= user.name + " also joined"%> |  <!-- change to name once implemented -->
+          <%= render "shared/user_image", user: meeting.user, css_class: "avatar-large" %>
+        <%= meeting.user.name + " also joined"%> |  <!-- change to name once implemented -->
           <%= meeting.status %>
         <% end %>
         </li>
@@ -109,15 +84,8 @@
         <% @meetings.each { |meeting| met_off << meeting unless meeting.status == "cancelled"} %>
         <% met_off.each do |meeting|%>
         <li class="mb-2">
-          <% user = User.find(meeting.user_id) %>
-        <% if meeting.user.photo.attached? %>
-          <%= cl_image_tag meeting.user.photo.key, class: "avatar-large", alt: "avatar-large" %>
-        <% elsif meeting.user.avatar_url != ""%>
-          <%= image_tag meeting.user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <% else %>
-          <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-        <% end %>
-        <%= user.name + " also joined"%> |  <!-- change to name once implemented -->
+        <%= render "shared/user_image", user: meeting.user, css_class: "avatar-large" %>
+        <%= meeting.user.name + " also joined"%> |  <!-- change to name once implemented -->
           <%= meeting.status %>
         <% end %>
         </li>

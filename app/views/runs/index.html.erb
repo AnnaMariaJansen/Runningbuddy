@@ -18,14 +18,7 @@
                   <p>Location: <%= run.location %></p>
                 </div>
                 <%= link_to "More", run_path(run), class: "button-green" %>
-                <% creator = User.find(run.user_id) %>
-                <% if creator.photo.attached? %>
-                  <%= cl_image_tag creator.photo.key, class: "card-trip-user avatar-bordered" %>
-                <% elsif creator.avatar_url != ""%>
-                  <%= image_tag creator.avatar_url, class: "card-trip-user avatar-bordered" %>
-                <% else %>
-                  <%= image_tag "https://images.unsplash.com/photo-1524957467802-e4a9b20bcd5c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhpdCUyMGdyZWVufGVufDB8fDB8&auto=format&fit=crop&w=800&q=60", class: "ml-2 avatar", alt: "avatar" %>
-                <% end %>
+                <%= render "shared/user_image", user: User.find(run.user_id), css_class: "card-trip-user avatar-bordered" %>
               </div>
 
           </div>
