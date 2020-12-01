@@ -93,7 +93,7 @@
     <% end %>
   </div>
   <div class="buttons-bottom">
-    <%= link_to "Back", :back, class: "button-green" %>
+    <%= link_to "Back", runs_path, class: "button-rosa" %>
     <% if user_signed_in? %>
       <% user_1_iam = [] %>
       <% @meetings.each do |met| %>
@@ -101,10 +101,10 @@
       <% end %>
       <% not_joinable = user_1_iam.include?(true) %>
       <% unless not_joinable %>
-        <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
+        <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
       <% end %>
     <% else %>
-      <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-rosa ml-5" %>
+      <%= button_to 'Join!', { controller: "meetings", action: "create", run_id: @run.id, user_id: current_user , method: :post }, class: "button-green ml-5" %>
     <% end %>
   </div>
 </div>

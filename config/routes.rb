@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'pages#home'
+  get 'community', to: 'pages#community'
 
   resources :runs,  except:[:destroy] do
     resources :meetings, only:[:create, :update]

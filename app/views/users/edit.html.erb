@@ -1,4 +1,4 @@
-<div class="edit-user-container mt-4 mb-5">
+<div class="edit-user-container mt-4 mb-5" style="color: #015460">
   <div class="col-12">
     <h3>Edit your profile</h3>
     <%= simple_form_for(@user) do |f| %>
@@ -8,7 +8,7 @@
     <%= f.input :running_level %>
     <%= f.input :avatar_url, as: :string %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit class: "button-rosa" %>
+    <%= f.submit class: "button-green" %>
     <% end %>
   <%#= link_to "User", user_path, class: "btn btn-ghost" %>
  </div>

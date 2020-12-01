@@ -4,6 +4,7 @@ require 'open-uri'
 Meeting.delete_all
 Run.delete_all
 User.delete_all
+Message.delete_all
 
 user_one = User.create!(email: 'sophtest@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1, avatar_url: "https://avatars0.githubusercontent.com/u/70213059?v=4")
 file = URI.open('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cnVubmluZ3xlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=1296&q=60')

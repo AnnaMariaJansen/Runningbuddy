@@ -1,15 +1,32 @@
 <h1>Chatrooms</h1>
 <% @chatrooms.each do |chat| %>
-  <ul>
     <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
-      <li>
         <% if current_user == chat.buddy_connection.user_1 %>
         <!-- can add user avatar here too once implemented -->
-          <%= link_to "#{chat.buddy_connection.user_2.name}", chatroom_path(chat) %>
+          <a href="<%= chatroom_path(chat) %>" class="cardlink">
+            <div class="card-product">
+              <%= image_tag chat.buddy_connection.user_2.avatar_url %>
+              <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
+              <div class="card-product-infos">
+                <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+                <p>most recent message if possible?</p>
+              </div>
+            </div>
+          </a>
         <% else %>
-          <%= link_to "#{chat.buddy_connection.user_1.name}", chatroom_path(chat) %>
+          <a href="<%= chatroom_path(chat) %>" class="cardlink">
+            <div class="card-product">
+              <%= image_tag chat.buddy_connection.user_1.avatar_url %>
+              <div class="card-product-infos">
+                <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                <p>most recent message if possible?</p>
+              </div>
+            </div>
+          </a>
         <% end %>
-      </li>
     <% end %>
-  </ul>
 <% end %>
+<hr>
+<div style="text-align: center;">
+  <%= link_to "Find new buddies here!", users_path, class: "button-green p-2" %>
+</div>
