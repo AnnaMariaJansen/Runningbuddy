@@ -21,7 +21,7 @@
                 <p>Gender: <%= user.gender %></p>
                 <p>Running Level: <%= user.running_level %></p>
               </div>
-              <%= link_to "Unbuddy", user_buddy_connection_path(id: buddy_connection.id), method: "DELETE", data: { confirm: "Are you sure?" }, class: "button-rosa" %>
+              <%= link_to "Unbuddy", user_buddy_connection_path(id: buddy_connection.id), method: "DELETE", data: { confirm: "Are you sure?" }, class: "button-green" %>
             </div>
         </div>
       <% end %>
@@ -29,6 +29,6 @@
 
   </div>
   <div class="buttons-bottom">
-    <%= link_to "Back", :back, class: "button-green" %>
+    <%= link_to "Back", :back, class: "button-rosa" %>
   </div>
 </div>
