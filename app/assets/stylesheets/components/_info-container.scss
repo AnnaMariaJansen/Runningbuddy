@@ -35,7 +35,8 @@ color: #015460;
   padding-top:20px;
   padding-bottom: 15px;
   padding-left: 15px;
-
+  padding-right: 15px;
+  justify-content: space-between;
 }
 
 .last-runs {
@@ -55,6 +56,29 @@ color: #015460;
   justify-content: space-between;
   margin-top:40px;
 }
+
+
+@media screen and (max-width: 600px) {
+  .user-photo {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
