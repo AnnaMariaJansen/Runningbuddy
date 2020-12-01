@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:index, :show] do
     resources :messages, only: :create
   end
+
+  patch "/messagereadcheck", to: "messages#readcheck"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

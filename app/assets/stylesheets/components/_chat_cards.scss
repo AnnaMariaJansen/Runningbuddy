@@ -7,6 +7,13 @@
   align-items: center;
   margin: 20px;
   border-radius: 5px;
+  position: relative
+}
+
+.notification-bell-card {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .card-product img {

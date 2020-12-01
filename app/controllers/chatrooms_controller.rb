@@ -4,14 +4,27 @@ class ChatroomsController < ApplicationController
     all_buds = policy_scope(BuddyConnection)
     @buddies = all_buds.where(user_1_id: current_user) + all_buds.where(user_2_id: current_user)
     @chatrooms = policy_scope(Chatroom)
+    @messages_unread = []
+    @chatrooms.each do |chat|
+      Message.where(chatroom_id: chat.id).each do |message|
+        @messages_unread << message unless message.read
+      end
+    end
     # limit to only show chatrooms current_user is a part of
   end
 
   def show
     authorize @chatroom
     @message = Message.new
+    @buddy_connection = @chatroom.buddy_connection
+    if current_user.id == @buddy_connection.user_1_id
+      @sender = @buddy_connection.user_2
+    else
+      @sender = @buddy_connection.user_1
+    end
+    @buddys_messages = Message.where(chatroom_id: params[:id], user_id: @sender.id)
+    @buddys_messages.each { |mes| mes.update(read: true) }
   end
-  # autocreate chatroom when buddy connection is made
 
   private
 

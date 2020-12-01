@@ -44,3 +44,36 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 });
+
+
+
+
+let chatCard = document.querySelector(".cardlink");
+ //will have to be changes when deployed
+chatCard.addEventListener("click", (event) => {
+  console.log(chatCard.dataset.chatroom);
+  console.log(chatCard.dataset.user);
+  fetch("http://localhost:3000/messagereadcheck", {
+    method: "PATCH",
+    body: JSON.stringify({ chatroom_id: chatCard.dataset.chatroom, user_id: chatCard.dataset.user })
+  });
+  // read: false => true
+  // take all messeges from chatroom
+  // mark them as read => call update
+  // fetch
+});
+// => once read status can be updated
+const messageDot = document.querySelector(".message-dot");
+
+
+
+// check for unread messages
+
+// toggle hidden-dot class on message dot
+
+
+
+
+
+
+
