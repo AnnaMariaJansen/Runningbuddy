@@ -14,10 +14,10 @@ class RunsController < ApplicationController
       # @runs = policy_scope(Run)
     # end
     @markers = @runs.geocoded.map do |run|
-       {
+      {
        lat: run.latitude,
        lng: run.longitude
-     }
+      }
      end
   end
 
