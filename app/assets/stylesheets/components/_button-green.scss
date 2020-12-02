@@ -11,7 +11,8 @@
   transition: 0.5s;
   flex-grow: 0;
   height: 35px;
-  }
+}
+
 .button-green:hover {
   text-decoration: none;
   background-color:white !important;
@@ -21,4 +22,24 @@
 
 .btn-text {
   z-index: 1;
+}
+.com-options {
+  display: flex;
+  justify-content: space-between;
+}
+.button-com {
+  background-color: #9EF019;
+  color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #9EF019;
+  height:180px;
+  width:180px;
+  text-align: center;
+  vertical-align: center;
+}
+.button-com:hover {
+  text-decoration: none;
+  background-color:white !important;
+  color: #9EF019 !important;
+  box-shadow: 2px 3px 20px ;
 }
