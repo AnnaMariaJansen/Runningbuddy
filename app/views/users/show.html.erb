@@ -43,9 +43,9 @@
   </div>
   <div class="buttons-bottom">
     <%= link_to "Back", users_path, class: "button-rosa" %>
-
+    <% unless current_user == @creator %>
     <%= link_to "Buddy up!", user_buddy_connections_path(user_id: @creator.id), method: "POST", class: "button-green" %>
-
+    <% end %>
   </div>
 </div>
 
