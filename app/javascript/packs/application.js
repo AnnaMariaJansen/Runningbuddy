@@ -34,32 +34,17 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 
 import { unreadCounter } from './unread'
+import { lupenSuche } from './searchbar'
+
 
 document.addEventListener('turbolinks:load', () => {
-  initAutocomplete();
   initChatroomCable();
   initMapbox();
   unreadCounter();
-
+  initAutocomplete();
+  lupenSuche();
   // Call your functions here, e.g:
   // initSelect2();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

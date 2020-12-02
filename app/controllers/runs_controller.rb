@@ -6,13 +6,25 @@ class RunsController < ApplicationController
     @runs = policy_scope(Run)
     # so dann in categories
     @runs_5 = policy_scope(Run).where(length: 5)
-    # if params[:query].present?
-    #   # sql_query = "route ILIKE :query OR length ILIKE :query"
-    #   # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
-    #   @error = "sorry we couldn't find a run with your criteria" if @runs == []
-    # else
-      # @runs = policy_scope(Run)
-    # end
+
+    if params[:query].present?
+      # sql_query = "\
+      #   runs.location @@ :query \
+      #   OR runs.length @@ :query \
+      #   OR runs.route @@ :query \
+      #   OR runs.duration @@ :query \
+      #   OR runs.duration @@ :query \
+      #   OR runs.duration @@ :query \
+      #   OR users.gender @@ :query \
+      #   OR users.running_level @@ :query \
+      #   "
+      @runs = Run.global_search(params[:query])
+      # @runs = User.joins(:meeting).where(sql_query, query: "%#{params[:query]}%")
+      # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
+      @error = "sorry we couldn't find a run with your criteria" if @runs.empty?
+    else
+      @runs = policy_scope(Run)
+    end
   end
 
   def show
