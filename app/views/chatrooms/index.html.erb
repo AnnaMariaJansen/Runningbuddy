@@ -1,5 +1,5 @@
 <h1>Chatrooms</h1>
-<% @chatrooms.sort.each do |chat| %>
+<% @chatrooms.each do |chat| %>
   <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
       <% if current_user == chat.buddy_connection.user_1 %>
       <!-- can add user avatar here too once implemented -->
