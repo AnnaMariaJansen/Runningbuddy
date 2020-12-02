@@ -31,19 +31,33 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 // import { initSelect2 } from '../components/init_select2';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
+import { initMapbox } from '../plugins/init_mapbox';
+
+import { unreadCounter } from './unread'
+
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initChatroomCable();
+  initMapbox();
+  unreadCounter();
 
   // Call your functions here, e.g:
   // initSelect2();
 });
 
-import { initMapbox } from '../plugins/init_mapbox';
 
-document.addEventListener('turbolinks:load', () => {
-  initMapbox();
-});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
