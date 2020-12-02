@@ -36,25 +36,29 @@
   <% end %>
 </div>
 <% if current_user == @chatroom.buddy_connection.user_1 %>
-<!-- can add user avatar here too once implemented -->
-<%#= form_tag partners_path, method: :post do %>
-  <%#= text_field_tag :query,
-    params[:query],
-    placeholder: "Find a partner", class: "p-2"
-  %>
-  <%#= submit_tag "Search", class: "btn btn-primary p-2" %>
-<%# end %>
-  <div class="m-3 send-msg-form">
-    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "d-inline-flex") do |f| %>
-      <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
-      <button class="button-green"><i class="far fa-paper-plane"></i></button>
+  <div class="m-3 container">
+    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
+      <div class="row">
+        <div class="col-10 m-0 p-0">
+          <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
+        </div>
+        <div class="col-2 m-0 p-0">
+          <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
+        </div>
+      </div>
     <% end %>
   </div>
 <% else %>
-  <div class="m-3 send-msg-form">
-    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "d-inline-flex") do |f| %>
-      <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
-      <button class="button-green"><i class="far fa-paper-plane"></i></button>
+  <div class="m-3 container">
+    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
+      <div class="row">
+        <div class="col-10 m-0 p-0">
+          <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
+        </div>
+        <div class="col-2 m-0 p-0">
+          <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
+        </div>
+      </div>
     <% end %>
   </div>
 <% end %>
