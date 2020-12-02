@@ -24,7 +24,7 @@
         <% if @creator.photo.attached?%>
           <%= cl_image_tag @creator.photo.key, width: 300, height: 200, crop: :fill %>
         <% else %>
-          <%= cl_image_tag("runner_cmnhbm", width: 200, height: 300, crop: :fill) %>
+          <%= image_tag("Running-Buddy-Logo.png", width: 400, height: 300, crop: :fill) %>
         <% end %>
       </div>
     </div>
