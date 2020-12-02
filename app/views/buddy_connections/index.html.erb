@@ -1,11 +1,12 @@
 <div class="detail-info">
 
   <h1 class="mt-5"> My BuddyConnections</h1>
-
+<% unless BuddyConnection.where(user_2_id: current_user.id) == [] %>
   <div class="user-info d-flex flex-wrap">
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     <h3 class="ml-4">You are now buddies with <%= BuddyConnection.where(user_2_id: current_user.id).last.user_1.name %></h3>
   </div>
+<% end %>
 
   <div class="user-info pt-4 pb-4">
     <h2>Your buddies:</h2>
