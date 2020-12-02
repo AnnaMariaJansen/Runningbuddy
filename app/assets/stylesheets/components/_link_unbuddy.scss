@@ -1,0 +1,21 @@
+.link-unbuddy {
+  margin-top: 10px;
+  margin-left: 9px;
+  display: cover;
+  background-color: #9EF019;
+  color: #ffffff;
+  border: 2px solid #9EF019;
+  text-align: center;
+  text-decoration: none;
+  padding: 9px 169px;
+  font-size: 15px;
+  transition: 0.5s;
+  height: 35px;
+}
+
+.link-unbuddy:hover {
+  text-decoration: none;
+  background-color:white !important;
+  color: #9EF019 !important;
+  box-shadow: 2px 3px 20px ;
+}
