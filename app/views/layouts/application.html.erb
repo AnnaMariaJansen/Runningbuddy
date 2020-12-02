@@ -15,7 +15,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
+    <span id="unread" class="hidden"><%= @messages_unreadapp.count %></span>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

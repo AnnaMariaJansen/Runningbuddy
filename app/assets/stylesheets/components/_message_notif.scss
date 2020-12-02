@@ -3,13 +3,16 @@
 }
 
 .fa-circle {
-  color: red;
+  color: red !important;
   font-size: 6px;
   font-weight: lighter;
   position: absolute;
   top: 25px;
   left: 13px;
 }
-.hidden-dot {
+.fa-circle:hover {
+  color: red !important;
+}
+.hidden {
   display: none;
 }
