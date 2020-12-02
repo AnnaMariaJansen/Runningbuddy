@@ -24,8 +24,9 @@
   z-index: 1;
 }
 .com-options {
+  margin-top: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .button-com {
   background-color: #9EF019;
@@ -35,7 +36,13 @@
   height:180px;
   width:180px;
   text-align: center;
-  vertical-align: center;
+  font-size: 30px;
+}
+.btn-chats {
+  padding-top: 65px;
+}
+.btn-uss {
+  padding-top: 20px;
 }
 .button-com:hover {
   text-decoration: none;

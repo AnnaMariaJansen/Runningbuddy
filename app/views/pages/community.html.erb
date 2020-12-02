@@ -3,8 +3,8 @@
 </div>
 <% if current_user.name %>
   <div class="com-options">
-    <%= link_to "Browse other Runners", users_path, class: "button-com m-3" %>
-    <%= link_to "Chats", chatrooms_path, class: "button-com m-3" %>
+    <%= link_to "Browse other Runners", users_path, class: "button-com m-3 btn-uss" %>
+    <%= link_to "Chats", chatrooms_path, class: "button-com m-3 btn-chats" %>
   </div>
 <% else %>
   <%= link_to "Edit to Make profile visible to other runners", "/users/:id/edit", class: "button-green p-3 center-block" %>
