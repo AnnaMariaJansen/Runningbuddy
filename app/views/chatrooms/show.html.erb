@@ -37,15 +37,27 @@
 </div>
 <% if current_user == @chatroom.buddy_connection.user_1 %>
 <!-- can add user avatar here too once implemented -->
+<%#= form_tag partners_path, method: :post do %>
+  <%#= text_field_tag :query,
+    params[:query],
+    placeholder: "Find a partner", class: "p-2"
+  %>
+  <%#= submit_tag "Search", class: "btn btn-primary p-2" %>
+<%# end %>
   <div class="m-3 send-msg-form">
-    <%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
+    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "d-inline-flex") do |f| %>
       <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
+      <button class="button-green"><i class="far fa-paper-plane"></i></button>
     <% end %>
   </div>
 <% else %>
   <div class="m-3 send-msg-form">
-    <%= simple_form_for([ @chatroom, @message ], remote: true) do |f| %>
+    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "d-inline-flex") do |f| %>
       <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
+      <button class="button-green"><i class="far fa-paper-plane"></i></button>
     <% end %>
   </div>
 <% end %>
+<div class="buttons-bottom">
+  <%= link_to "Back", chatrooms_path, class: "button-rosa m-3" %>
+</div>
