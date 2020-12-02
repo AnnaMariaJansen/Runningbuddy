@@ -25,7 +25,7 @@
 }
 .com-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .button-com {
   background-color: #9EF019;
@@ -35,7 +35,29 @@
   height:180px;
   width:180px;
   text-align: center;
-  vertical-align: center;
+  font-size: 30px;
+}
+.btn-chats {
+  padding-top: 65px;
+}
+.btn-uss {
+  padding-top: 20px;
+}
+.button-editprof {
+  background-color: #9EF019;
+  color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #9EF019;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  transition: 0.5s;
+}
+.button-editprof:hover {
+  text-decoration: none;
+  background-color:white !important;
+  color: #9EF019 !important;
+  box-shadow: 2px 3px 20px ;
 }
 .button-com:hover {
   text-decoration: none;
