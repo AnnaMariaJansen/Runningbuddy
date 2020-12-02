@@ -1,5 +1,5 @@
 <h1>Chatrooms</h1>
-<% @chatrooms.each do |chat| %>
+<% @chatrooms.sort.each do |chat| %>
   <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
       <% if current_user == chat.buddy_connection.user_1 %>
       <!-- can add user avatar here too once implemented -->
@@ -8,7 +8,12 @@
             <%= image_tag chat.buddy_connection.user_2.avatar_url %>
             <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
             <div class="card-product-infos">
-              <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+              <% message_in_this_chat = Message.where(chatroom: Chatroom.find(chat.id)).sort.last %>
+              <% if @messages_unread.include?(message_in_this_chat) && message_in_this_chat.user_id != current_user.id %>
+                <h2 class="bolden"><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+              <% else %>
+                <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -18,7 +23,12 @@
               <%= image_tag chat.buddy_connection.user_1.avatar_url %>
               <!-- <img src="<% chat.buddy_connection.user_2.avatar_url %>" /> -->
               <div class="card-product-infos">
-                <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                <% message_in_this_chat = Message.where(chatroom: Chatroom.find(chat.id)).sort.last %>
+                <% if @messages_unread.include?(message_in_this_chat) && message_in_this_chat.user_id != current_user.id %>
+                  <h2 class="bolden"><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                <% else %>
+                  <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -29,3 +39,4 @@
 <div style="text-align: center;">
   <%= link_to "Find new buddies here!", users_path, class: "button-green p-2" %>
 </div>
+

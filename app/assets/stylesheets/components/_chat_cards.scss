@@ -24,8 +24,11 @@
 
 .card-product h2 {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
   margin: 0;
+}
+.bolden {
+  font-weight: bold !important;
 }
 
 .card-product p {
