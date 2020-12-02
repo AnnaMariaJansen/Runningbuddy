@@ -1,0 +1,41 @@
+.profile-team {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  background-size: cover;
+  border: white 3px solid;
+  margin-right: 0px;
+  padding-right: 0px;
+  align-items: right;
+}
+
+
+.user-info-profil {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  /* align-items: center; */
+  margin-top:20px;
+  border-radius: 4px;
+  padding-top:20px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name-img {
+  justify-content: space-between;
+}
+
+.links-team a {
+  color: #9EF019;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.links-team a:hover {
+  opacity: 1;
+  color: green;
+}
