@@ -1,11 +1,15 @@
-<div class="run-container mt-4" style="color: #015460">
-  <h1>Community</h1>
-</div>
-<% if current_user.name %>
-  <div class="com-options">
-    <%= link_to "Browse other Runners", users_path, class: "button-com m-3 btn-uss" %>
-    <%= link_to "Chats", chatrooms_path, class: "button-com m-3 btn-chats" %>
+<div class="banner-home" style="; background-image: linear-gradient(rgba(0,0,0,4),rgba(0,0,0,0)), url(https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2177&q=80);">
+  <div class="run-container mt-4" style="color: #015460;">
+    <h1>Community</h1>
   </div>
-<% else %>
-  <%= link_to "Edit to Make profile visible to other runners", "/users/:id/edit", class: "button-green p-3 center-block" %>
-<% end %>
+  <% if current_user.name %>
+    <div class="com-options">
+      <%= link_to "Browse other Runners", users_path, class: "button-com m-3 btn-uss" %>
+      <%= link_to "Chats", chatrooms_path, class: "button-com m-3 btn-chats" %>
+    </div>
+  <% else %>
+    <div class="com-options">
+      <%= link_to "Edit to Make profile visible to other runners", "/users/:id/edit", class: "button-editprof center-block m-3 p-3" %>
+    </div>
+  <% end %>
+</div>
