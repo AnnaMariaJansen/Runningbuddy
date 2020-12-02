@@ -1,5 +1,10 @@
+<%= render "shared/searchbar" %>
 <div class="d-flex w-100">
   <div>
+    <% if ["index"].include?(params[:action]) %>
+      <p class="nav-link" id="search-toggler"></p>
+    <% end %>
+
     <div>
       <div class="card-trip-container">
         <% @runs.each do |run| %>
@@ -20,7 +25,6 @@
                 <%= link_to "More", run_path(run), class: "button-green" %>
                 <%= render "shared/user_image", user: User.find(run.user_id), css_class: "card-trip-user avatar-bordered" %>
               </div>
-
           </div>
         <% end %>
       </div>
