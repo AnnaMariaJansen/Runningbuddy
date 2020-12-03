@@ -1,10 +1,10 @@
 #SEEDS YA
 require 'open-uri'
 # Review.delete_all
+Message.delete_all
 Meeting.delete_all
 Run.delete_all
 User.delete_all
-Message.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1, avatar_url: "https://avatars0.githubusercontent.com/u/70213059?v=4.jpg")
 file = URI.open('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fHJ1bm5pbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
