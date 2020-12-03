@@ -1,6 +1,7 @@
 class RunsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_run, only: [:show, :edit, :update]
+
   def index
     # @runs = Run.all
     @runs = policy_scope(Run)
@@ -23,7 +24,7 @@ class RunsController < ApplicationController
       # @runs = policy_scope(Run).where(sql_query, query: "%#{params[:query]}%")
       @error = "sorry we couldn't find a run with your criteria" if @runs.empty?
     else
-      @runs = policy_scope(Run)
+      @runs = policy_scope(Run).order(created_at: :desc)
     end
   end
 
