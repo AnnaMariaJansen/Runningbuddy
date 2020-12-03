@@ -1,14 +1,16 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div>
-  <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "Running-Buddy-Logo.png" %>
-    <% end %>
-  </div>
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
-  <div>
-  <h3 class="mb-0">RunningBuddy</h3>
+  <div class="text-logo">
+    <div>
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "Running-Buddy-Logo.png" %>
+      <% end %>
+    </div>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div>
+      <h3 class="rb-text mb-0">RunningBuddy</h3>
+    </div>
   </div>
 
   <% if ["index"].include?(params[:action]) %>
