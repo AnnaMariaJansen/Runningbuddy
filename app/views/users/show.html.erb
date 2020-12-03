@@ -4,12 +4,12 @@
   <div class="user d-flex flex-wrap">
 <!--     <%# if @user.avatar_url%>
  -->
+   <h2 class="mr-5"><%= @creator.name %></h2>
   <div style="background-image: url('<%= @creator.avatar_url %>'); height: 100px; width: 100px; background-size: cover; border-radius: 50%; border: white 3px solid;">
   </div>
  <!--  <%# else @partner.url_photo%>
           <%#= cl_image_tag @user.url_photo, height: 500, width: 600 %> -->
    <!--  <%# end %> -->
-    <h2><%= @creator.name %></h2>
   </div>
   <div>
     <div class="user-info col-12" style="display: flex">
