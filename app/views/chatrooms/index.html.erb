@@ -1,4 +1,4 @@
-<h1>Chatrooms</h1>
+<h1 style="color: #015460;">Conversations</h1>
 <% @chatrooms.each do |chat| %>
   <% if chat.buddy_connection.user_1 == current_user || chat.buddy_connection.user_2 == current_user %>
       <% if current_user == chat.buddy_connection.user_1 %>
@@ -10,9 +10,9 @@
             <div class="card-product-infos">
               <% message_in_this_chat = Message.where(chatroom: Chatroom.find(chat.id)).sort.last %>
               <% if @messages_unread.include?(message_in_this_chat) && message_in_this_chat.user_id != current_user.id %>
-                <h2 class="bolden"><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+                <h2 class="bolden" style="color: #015460;"><%= "#{chat.buddy_connection.user_2.name}" %></h2>
               <% else %>
-                <h2><%= "#{chat.buddy_connection.user_2.name}" %></h2>
+                <h2 style="color: #015460;"><%= "#{chat.buddy_connection.user_2.name}" %></h2>
               <% end %>
             </div>
           </div>
@@ -25,9 +25,9 @@
               <div class="card-product-infos">
                 <% message_in_this_chat = Message.where(chatroom: Chatroom.find(chat.id)).sort.last %>
                 <% if @messages_unread.include?(message_in_this_chat) && message_in_this_chat.user_id != current_user.id %>
-                  <h2 class="bolden"><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                  <h2 class="bolden" style="color: #015460;"><%= "#{chat.buddy_connection.user_1.name}" %></h2>
                 <% else %>
-                  <h2><%= "#{chat.buddy_connection.user_1.name}" %></h2>
+                  <h2 style="color: #015460;"><%= "#{chat.buddy_connection.user_1.name}" %></h2>
                 <% end %>
               </div>
             </div>
