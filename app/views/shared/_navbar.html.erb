@@ -1,59 +1,35 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="text-logo">
-    <div>
+    <div class="logo">
       <%= link_to "/", class: "navbar-brand" do %>
         <%= image_tag "Running-Buddy-Logo.png" %>
       <% end %>
     </div>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <div>
+    <div class="text">
       <h3 class="rb-text mb-0">Running Buddy</h3>
     </div>
   </div>
 
-  <% if ["index"].include?(params[:action]) %>
-    <button type="button" id="SuchLupe"><i class="fas fa-search"></i></button>
+  <div class="loop-avatar">
+      <% if ["index"].include?(params[:action]) %>
+        <button type="button" id="SuchLupe"><i class="fas fa-search"></i></button>
       <% end %>
-  <!--
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <%# unless ["index"].include?(params[:action]) %>
-        <li class="nav-item">
-          <%#= link_to "Index", "/users", class: "nav-link" %>
-        </li>
-      <%# end %>
-    -->
     <div>
-      <!--
-        <li class="nav-item active">
-          <%#= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%#= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        -->
-        <div class="nav-item dropdown">
-          <% if user_signed_in? %>
-            <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <div class="nav-item">
-              <%= link_to "LOGIN", new_user_session_path, class: "nav-link" %>
-            </div>
-          <% end %>
-          <%# if user_signed_in? %>
-          <%# else %>
-          <%#= image_tag "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_960_720.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <%# end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% if user_signed_in? %>
-              <%= link_to "Edit profile", "/users/:id/edit", class: "dropdown-item" %>
-              <%#= link_to "Profil", new_run_path, class: "dropdown-item" %>
-              <%#= link_to "Dashboard", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            <% end %>
+      <div class="nav-item dropdown pl-4">
+        <% if user_signed_in? %>
+          <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <div class="nav-item">
+            <%= link_to "LOGIN", new_user_session_path, class: "nav-link" %>
           </div>
+        <% end %>
+        <div class="dropdown-menu dropdown-menu-right pl-4" aria-labelledby="navbarDropdown">
+          <% if user_signed_in? %>
+            <%= link_to "Edit profile", "/users/:id/edit", class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% end %>
         </div>
+      </div>
     </div>
+  </div>
 </div>
