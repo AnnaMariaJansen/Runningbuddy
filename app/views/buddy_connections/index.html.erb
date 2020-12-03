@@ -3,8 +3,9 @@
   <h1 class="mt-5"> My BuddyConnections</h1>
 <% unless BuddyConnection.where(user_2_id: current_user.id) == [] %>
   <div class="user-info d-flex flex-wrap">
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-    <h3 class="ml-4">You are now buddies with <%= BuddyConnection.where(user_2_id: current_user.id).last.user_1.name %></h3>
+    <%= render "shared/user_image", user: BuddyConnection.where(user_2: current_user).last.user_1, css_class: "card-trip-user avatar-bordered" %>
+<!--     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+ -->    <h3 class="ml-4">You are now buddies with <%= BuddyConnection.where(user_2_id: current_user.id).last.user_1.name %></h3>
   </div>
 <% end %>
 
