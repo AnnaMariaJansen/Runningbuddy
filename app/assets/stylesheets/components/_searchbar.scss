@@ -7,3 +7,16 @@
     max-height: 0px;
     transition: 0.7s;
 }
+
+.fa-search {
+  color: #9ff019 !important;
+  border: opx solid white !important;
+ }
+
+ #SuchLupe {
+  border: 0px solid white !important;
+  background-color: white;
+ }
+
+#SuchLupe:focus {outline:0;}
+

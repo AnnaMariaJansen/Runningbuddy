@@ -6,62 +6,63 @@
   <h1 class="creator-tag"><%= link_to "#{@chatroom.buddy_connection.user_1.name}", user_path(@chatroom.buddy_connection.user_1) %></h1> <!-- change to name once implemented -->
   <!-- <h1> <%#= "Chat with #{@chatroom.buddy_connection.user_1.name}" %></h1> -->
 <% end %>
-<div class="message-container" id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.sort.each do |message| %>
-    <% if message.user == current_user  %>
-      <div class="ml-3 mr-3 flex-row-reverse">
-          <div class="message-container-me" id="message-<%= message.id %>">
+<div class="container" style="max-width: 430px">
+  <div class="message-container"  id="messages" style="overflow-y: auto;" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.sort.each do |message| %>
+      <% if message.user == current_user  %>
+        <div class="ml-3 mr-3 flex-row-reverse">
+            <div class="message-container-me" id="message-<%= message.id %>">
+              <i class="author">
+                <span><%= message.user.name %></span>
+                <span><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></span>
+              </i>
+              <div class="message-line-me">
+                <p class="message-bubble-me"><%= message.content %></p>
+              </div>
+            </div>
+        </div>
+      <% else %>
+      <div class="ml-3 mr-3 flex-row">
+          <div class="message-container-you" id="message-<%= message.id %>">
             <i class="author">
               <span><%= message.user.name %></span>
               <span><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></span>
             </i>
-            <div class="message-line-me">
-              <p class="message-bubble-me"><%= message.content %></p>
+            <div class="message-line-you">
+              <p class="message-bubble-you"><%= message.content %></p>
             </div>
           </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+    <% if current_user == @chatroom.buddy_connection.user_1 %>
+      <div class="m-3 container">
+        <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
+          <div class="row form-rows">
+            <div class="col-10 m-0 p-0">
+              <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
+            </div>
+            <div class="col-2 m-0 p-0">
+              <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
+            </div>
+            <%= link_to "Back", chatrooms_path, class: "button-rosa" %>
+          </div>
+        <% end %>
       </div>
     <% else %>
-    <div class="ml-3 mr-3 flex-row">
-        <div class="message-container-you" id="message-<%= message.id %>">
-          <i class="author">
-            <span><%= message.user.name %></span>
-            <span><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></span>
-          </i>
-          <div class="message-line-you">
-            <p class="message-bubble-you"><%= message.content %></p>
+    <div class="m-3 container">
+      <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
+        <div class="row form-rows">
+          <div class="col- m-0 p-0">
+            <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
           </div>
+          <div class="col-2 m-0 p-0">
+            <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
+          </div>
+          <%= link_to "Back", chatrooms_path, class: "button-rosa" %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
-</div>
-<% if current_user == @chatroom.buddy_connection.user_1 %>
-  <div class="m-3 container">
-    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
-      <div class="row">
-        <div class="col-10 m-0 p-0">
-          <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_2.name}" %>
-        </div>
-        <div class="col-2 m-0 p-0">
-          <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="m-3 container">
-    <%= simple_form_for([ @chatroom, @message ], remote: true, class: "send-msg-form") do |f| %>
-      <div class="row">
-        <div class="col-10 m-0 p-0">
-          <%= f.input :content, class: "text-bar-send", label: false, placeholder: "Message to #{@chatroom.buddy_connection.user_1.name}" %>
-        </div>
-        <div class="col-2 m-0 p-0">
-          <button type="submit"class="button-green-send"><i class="far fa-paper-plane"></i></button>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-<div class="buttons-bottom">
-  <%= link_to "Back", chatrooms_path, class: "button-rosa m-3" %>
 </div>

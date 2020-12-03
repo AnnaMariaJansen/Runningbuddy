@@ -1,7 +1,8 @@
 <div class="detail-info">
   <div class="user d-flex flex-wrap">
-    <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator) %></h1> <!-- change to name once implemented -->
-       <%= render "shared/user_image", user: @creator, css_class: "avatar-large" %>
+    <h1 class="creator-tag">Run by <%= link_to "#{@creator.name}", user_path(@creator)%></h1> <!-- change to name once implemented -->
+      <div style="background-image: url('<%= @creator.avatar_url %>'); height: 100px; width: 100px; background-size: cover; border-radius: 50%; border: white 3px solid;">
+      </div>
   </div>
   <div id="map-<%=@run.id %>" class="maps"
      style="width: 50%; height: 400px; ml-3"
