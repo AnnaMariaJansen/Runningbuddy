@@ -3,6 +3,7 @@
   justify-content: space-between;
   left: -1px;
   top: 0px;
+  align-items: left;
 
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -31,7 +32,7 @@
   background-clip: text;
   color: transparent;
   text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
-  font-size: 4.2vh !important;
+  font-size: 4.0vh !important;
 }
 
 .navbar-lewagon .nav-link {
@@ -48,3 +49,11 @@
   text-decoration: none;
 }
 
+.rb-text {
+  color: #9EF019;
+}
+
+.text-logo {
+  display: flex;
+  justify-content: space-between;
+}
