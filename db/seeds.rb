@@ -10,7 +10,7 @@ user_one = User.create!(email: 'soph@example.com', password: '123456', name: "So
 file = URI.open('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fHJ1bm5pbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
 user_one.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 run_one = Run.create!(route: 'Schlosspark Nymphenburg', length: '7', pace: "slow", duration: "70 min", date: "28.12.2020", location: "Schloß Nymphenburg 1, 80638 München", user_id: user_one.id)
-meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id
+meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
 # review_one = Review.create!(vibe_rating: "nice", route_rating: "very nice", challenge_rating: "not easy", user_id: user_one.id , meeting_id: meeting_one.id)
 
 user_two = User.create!(email: 'arthur@example.com', password: '123456', name: "Arthur", birthday: "14.08.2002" , gender: "M" , running_level: 3, avatar_url: "https://avatars3.githubusercontent.com/u/70213112?v=4.jpg" )
