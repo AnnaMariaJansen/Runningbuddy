@@ -7,7 +7,7 @@ User.delete_all
 Message.delete_all
 
 user_one = User.create!(email: 'soph@example.com', password: '123456', name: "Soph", birthday: "02.12.1998" , gender: "F" , running_level: 1, avatar_url: "https://avatars0.githubusercontent.com/u/70213059?v=4")
-file = URI.open('https://images.unsplash.com/photo-1516398810565-0cb4310bb8ea?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZlbWFsZSUyMHJ1bm5lcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60')
+file = URI.open('file:///Users/sofiuhduny/Desktop/Screenshot%202020-12-03%20at%2012.54.32.png')
 user_one.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 run_one = Run.create!(route: 'Schlosspark Nymphenburg', length: '7', pace: "slow", duration: "70 min", date: "28.11.2020", location: "Schloß Nymphenburg 1, 80638 München", user_id: user_one.id)
 meeting_one = Meeting.create!(user_id: user_one.id, run_id: run_one.id)
