@@ -6,8 +6,6 @@ class RunsController < ApplicationController
     # @runs = Run.all
     @runs = policy_scope(Run)
     # so dann in categories
-    @runs_5 = policy_scope(Run).where(length: 5)
-
     if params[:query].present?
       # sql_query = "\
       #   runs.location @@ :query \
