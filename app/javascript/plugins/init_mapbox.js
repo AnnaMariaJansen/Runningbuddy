@@ -21,12 +21,12 @@ const initMapbox = () => {
       markers.forEach((marker) => {
         const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
         const element = document.createElement('div');
-          element.className = 'marker';
-          element.style.backgroundImage = `url('https://www.atozpartyrental.net/dev/wp-content/uploads/2018/06/SPANDEX_swatch_neongreen-458x500.jpg')`;
-          element.style.backgroundSize = 'contain';
-          element.style.borderRadius = '50px';
-          element.style.width = '15px';
-          element.style.height = '15px';
+        element.className = 'marker';
+        element.style.backgroundImage = `url('https://www.atozpartyrental.net/dev/wp-content/uploads/2018/06/SPANDEX_swatch_neongreen-458x500.jpg')`;
+        element.style.backgroundSize = 'contain';
+        element.style.borderRadius = '50px';
+        element.style.width = '15px';
+        element.style.height = '15px';
         new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
